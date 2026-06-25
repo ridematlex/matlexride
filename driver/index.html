@@ -1,0 +1,1108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Matlex Ride — Driver App</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/driver.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     DEMO TOOLBAR
+     ============================================================ -->
+<div class="demo-toolbar">
+  <div class="brand">
+    <div class="brand-icon"><img src="../assets/images/Logo1.png" alt="Matlex Ride"></div>
+    <div>
+      <div class="brand-name">Matlex Ride</div>
+      <div class="brand-sub">Driver App — Preview</div>
+    </div>
+  </div>
+  <div class="demo-screens">
+    <button class="demo-btn active" data-screen="login">Login</button>
+    <button class="demo-btn" data-screen="register">Register</button>
+    <button class="demo-btn" data-screen="home">Home</button>
+    <button class="demo-btn" data-screen="request">New Request</button>
+    <button class="demo-btn" data-screen="active">Active Trip</button>
+    <button class="demo-btn" data-screen="earnings">Earnings</button>
+    <button class="demo-btn" data-screen="profile">Profile</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     PHONES GRID
+     ============================================================ -->
+<div class="phones-grid">
+
+
+<!-- ============================================================
+     SCREEN 1 — LOGIN
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch">
+    <div class="notch-speaker"></div>
+    <div class="notch-camera"></div>
+  </div>
+  <div class="phone-screen" data-screen="login" style="display:flex;">
+
+    <div class="status-bar dark">
+      <span>9:41</span>
+      <div class="status-icons">
+        <i class="fa-solid fa-signal"></i>
+        <i class="fa-solid fa-wifi"></i>
+        <i class="fa-solid fa-battery-full"></i>
+      </div>
+    </div>
+
+    <div class="screen-login">
+      <div class="login-hero">
+        <div class="login-logo"><img src="../assets/images/Logo1.png" alt="Matlex Ride"></div>
+        <div class="login-app-name">Matlex Ride</div>
+        <div class="login-app-sub">Driver Portal</div>
+      </div>
+
+      <div class="login-form-area">
+        <div class="login-heading">Welcome Back</div>
+        <div class="login-sub">Sign in to start accepting rides</div>
+
+        <div class="input-group-app">
+          <i class="fa-solid fa-phone"></i>
+          <input class="input-app" type="tel" placeholder="+256 7XX XXX XXX" />
+        </div>
+        <div class="input-group-app">
+          <i class="fa-solid fa-lock"></i>
+          <input class="input-app" type="password" placeholder="Password" />
+        </div>
+
+        <div class="forgot-link">Forgot Password?</div>
+
+        <button class="btn-app-primary btn-login-submit">
+          <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Sign In
+        </button>
+
+        <div class="divider-or">or</div>
+
+        <button class="btn-app-ghost btn-go-register">
+          <i class="fa-solid fa-user-plus me-2"></i>Register as a Driver
+        </button>
+
+        <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:18px;">
+          By signing in you agree to Matlex Ride's
+          <span style="color:var(--brand);font-weight:600;">Terms & Conditions</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 2 — DRIVER REGISTRATION
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch">
+    <div class="notch-speaker"></div>
+    <div class="notch-camera"></div>
+  </div>
+  <div class="phone-screen" data-screen="register" style="display:none;">
+
+    <div class="status-bar dark">
+      <span>9:41</span>
+      <div class="status-icons">
+        <i class="fa-solid fa-signal"></i>
+        <i class="fa-solid fa-wifi"></i>
+        <i class="fa-solid fa-battery-full"></i>
+      </div>
+    </div>
+
+    <div class="screen-register">
+      <div class="reg-header">
+        <button class="reg-back-btn btn-reg-back"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="reg-header-text">
+          <h2>Driver Registration</h2>
+          <p class="reg-step-counter">Step 1 of 4</p>
+        </div>
+      </div>
+
+      <!-- Progress dots -->
+      <div class="reg-steps" style="background:var(--dark);padding-bottom:16px;">
+        <div class="reg-step-dot active"></div>
+        <div class="reg-step-dot"></div>
+        <div class="reg-step-dot"></div>
+        <div class="reg-step-dot"></div>
+      </div>
+
+      <div class="reg-body">
+
+        <!-- Step 1: Personal Info -->
+        <div class="reg-step-content">
+          <div class="reg-section-title"><i class="fa-solid fa-user"></i> Personal Information</div>
+
+          <div class="mb-3">
+            <div class="input-label">First Name</div>
+            <input type="text" class="input-app" placeholder="e.g. Peter" style="padding-left:14px;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Last Name</div>
+            <input type="text" class="input-app" placeholder="e.g. Okello" style="padding-left:14px;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Phone Number</div>
+            <input type="tel" class="input-app" placeholder="+256 7XX XXX XXX" style="padding-left:14px;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Email Address</div>
+            <input type="email" class="input-app" placeholder="driver@example.com" style="padding-left:14px;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Date of Birth</div>
+            <input type="date" class="input-app" style="padding-left:14px;" />
+          </div>
+          <div class="mb-4">
+            <div class="input-label">Gender</div>
+            <div style="display:flex;gap:10px;">
+              <label style="flex:1;background:var(--body-bg);border:1.5px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;">
+                <input type="radio" name="gender" value="male" style="accent-color:var(--brand);width:16px;height:16px;" /> Male
+              </label>
+              <label style="flex:1;background:var(--body-bg);border:1.5px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;">
+                <input type="radio" name="gender" value="female" style="accent-color:var(--brand);width:16px;height:16px;" /> Female
+              </label>
+            </div>
+          </div>
+
+          <button class="btn-app-primary btn-reg-next">Continue <i class="fa-solid fa-arrow-right ms-2"></i></button>
+        </div>
+
+        <!-- Step 2: Vehicle Info -->
+        <div class="reg-step-content" style="display:none;">
+          <div class="reg-section-title"><i class="fa-solid fa-car"></i> Vehicle Details</div>
+
+          <div class="mb-3">
+            <div class="input-label">Number Plate</div>
+            <input type="text" class="input-app" placeholder="e.g. UBG 432B" style="padding-left:14px;text-transform:uppercase;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Vehicle Make</div>
+            <input type="text" class="input-app" placeholder="e.g. Toyota" style="padding-left:14px;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Vehicle Model</div>
+            <input type="text" class="input-app" placeholder="e.g. Wish" style="padding-left:14px;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Year of Manufacture</div>
+            <input type="number" class="input-app" placeholder="e.g. 2018" style="padding-left:14px;" />
+          </div>
+          <div class="mb-4">
+            <div class="input-label">Vehicle Type</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <label style="flex:1;min-width:80px;background:var(--body-bg);border:1.5px solid var(--border);border-radius:12px;padding:10px 8px;cursor:pointer;text-align:center;font-size:12px;font-weight:600;">
+                <input type="radio" name="vtype" style="display:none;" />
+                <i class="fa-solid fa-car" style="display:block;font-size:20px;margin-bottom:4px;color:var(--muted);"></i>Saloon
+              </label>
+              <label style="flex:1;min-width:80px;background:var(--body-bg);border:1.5px solid var(--border);border-radius:12px;padding:10px 8px;cursor:pointer;text-align:center;font-size:12px;font-weight:600;">
+                <input type="radio" name="vtype" style="display:none;" />
+                <i class="fa-solid fa-truck-pickup" style="display:block;font-size:20px;margin-bottom:4px;color:var(--muted);"></i>SUV
+              </label>
+              <label style="flex:1;min-width:80px;background:var(--body-bg);border:1.5px solid var(--border);border-radius:12px;padding:10px 8px;cursor:pointer;text-align:center;font-size:12px;font-weight:600;">
+                <input type="radio" name="vtype" style="display:none;" />
+                <i class="fa-solid fa-motorcycle" style="display:block;font-size:20px;margin-bottom:4px;color:var(--muted);"></i>Boda
+              </label>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3">
+            <button class="btn-app-ghost btn-reg-prev" style="width:auto;padding:14px 20px;">Back</button>
+            <button class="btn-app-primary btn-reg-next" style="flex:1;">Continue <i class="fa-solid fa-arrow-right ms-2"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 3: Documents -->
+        <div class="reg-step-content" style="display:none;">
+          <div class="reg-section-title"><i class="fa-solid fa-file-shield"></i> Documents</div>
+
+          <div class="mb-3">
+            <div class="input-label">National ID / Passport</div>
+            <div class="upload-box">
+              <i class="fa-solid fa-id-card"></i>
+              <p>Tap to upload National ID</p>
+              <span>JPG, PNG or PDF — Max 5MB</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Driver's Licence</div>
+            <div class="upload-box">
+              <i class="fa-solid fa-id-badge"></i>
+              <p>Tap to upload Driver's Licence</p>
+              <span>JPG, PNG or PDF — Max 5MB</span>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-label">Vehicle Insurance / Permit</div>
+            <div class="upload-box">
+              <i class="fa-solid fa-file-contract"></i>
+              <p>Tap to upload Insurance Certificate</p>
+              <span>JPG, PNG or PDF — Max 5MB</span>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3">
+            <button class="btn-app-ghost btn-reg-prev" style="width:auto;padding:14px 20px;">Back</button>
+            <button class="btn-app-primary btn-reg-next" style="flex:1;">Continue <i class="fa-solid fa-arrow-right ms-2"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 4: Payment / Final -->
+        <div class="reg-step-content" style="display:none;">
+          <div class="reg-section-title"><i class="fa-solid fa-mobile-screen"></i> Payment Details</div>
+
+          <div class="mb-3">
+            <div class="input-label">Mobile Money Provider</div>
+            <div style="display:flex;gap:10px;">
+              <label style="flex:1;background:var(--body-bg);border:1.5px solid var(--border);border-radius:12px;padding:12px 8px;cursor:pointer;text-align:center;font-size:12px;font-weight:600;">
+                <input type="radio" name="momo" style="display:none;" />
+                <div style="font-size:18px;margin-bottom:4px;">📱</div>MTN MoMo
+              </label>
+              <label style="flex:1;background:var(--body-bg);border:1.5px solid var(--border);border-radius:12px;padding:12px 8px;cursor:pointer;text-align:center;font-size:12px;font-weight:600;">
+                <input type="radio" name="momo" style="display:none;" />
+                <div style="font-size:18px;margin-bottom:4px;">📱</div>Airtel Money
+              </label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-label">Mobile Money Number</div>
+            <input type="tel" class="input-app" placeholder="+256 7XX XXX XXX" style="padding-left:14px;" />
+          </div>
+          <div class="mb-3">
+            <div class="input-label">Create Password</div>
+            <input type="password" class="input-app" placeholder="Min. 8 characters" style="padding-left:14px;" />
+          </div>
+          <div class="mb-4">
+            <div class="input-label">Confirm Password</div>
+            <input type="password" class="input-app" placeholder="Re-enter password" style="padding-left:14px;" />
+          </div>
+
+          <!-- T&C checkbox -->
+          <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--muted);margin-bottom:18px;cursor:pointer;">
+            <input type="checkbox" style="accent-color:var(--brand);width:16px;height:16px;margin-top:1px;flex-shrink:0;" />
+            I agree to Matlex Ride's <span style="color:var(--brand);font-weight:600;margin-left:4px;">Terms of Service</span> and <span style="color:var(--brand);font-weight:600;margin-left:4px;">Driver Policy</span>
+          </label>
+
+          <div class="d-flex gap-3">
+            <button class="btn-app-ghost btn-reg-prev" style="width:auto;padding:14px 20px;">Back</button>
+            <button class="btn-app-primary btn-reg-next" style="flex:1;background:var(--success);box-shadow:0 4px 16px rgba(40,199,111,.4);">
+              <i class="fa-solid fa-check me-2"></i>Submit Application
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 3 — HOME (DRIVER DASHBOARD)
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch">
+    <div class="notch-speaker"></div>
+    <div class="notch-camera"></div>
+  </div>
+  <div class="phone-screen" data-screen="home" style="display:none;">
+
+    <!-- Map Area -->
+    <div class="home-map-area">
+      <div class="map-grid"></div>
+      <!-- Roads -->
+      <div class="map-road-h" style="top:35%;"></div>
+      <div class="map-road-h" style="top:65%;"></div>
+      <div class="map-road-v" style="left:30%;"></div>
+      <div class="map-road-v" style="left:65%;"></div>
+      <!-- Location dot -->
+      <div class="map-location-dot" style="top:45%;left:50%;"></div>
+
+      <!-- Top overlay: status bar + toggle -->
+      <div style="position:absolute;top:0;left:0;right:0;">
+        <div class="status-bar transparent-dark" style="position:relative;top:0;">
+          <span>9:41</span>
+          <div class="status-icons">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+        </div>
+        <div style="padding:0 14px 10px;display:flex;align-items:center;justify-content:space-between;">
+          <div class="online-toggle-wrap">
+            <span class="online-status-text online-toggle-label">Online</span>
+            <label class="toggle-switch">
+              <input type="checkbox" class="driver-online-toggle" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <span class="status-badge-map badge-online">● Online</span>
+        </div>
+      </div>
+
+      <!-- Map zoom -->
+      <div class="map-zoom-btns">
+        <button class="map-zoom-btn">+</button>
+        <button class="map-zoom-btn" style="font-size:22px;line-height:1;">−</button>
+      </div>
+
+      <!-- Bottom overlay -->
+      <div class="map-overlay-bottom">
+        <span class="map-location-label"><i class="fa-solid fa-location-dot me-1"></i>Kampala, Uganda</span>
+        <span class="map-location-label"><i class="fa-solid fa-clock me-1"></i>Peak Hours</span>
+      </div>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div class="home-scroll">
+
+      <!-- Today Earnings Card -->
+      <div class="earnings-card">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1;">
+          <div>
+            <div class="earnings-label">Today's Earnings</div>
+            <div class="earnings-amount">UGX 182,000</div>
+          </div>
+          <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--brand);">12</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);">Trips</div>
+          </div>
+        </div>
+        <div class="earnings-meta" style="position:relative;z-index:1;">
+          <div class="earnings-meta-item">
+            <strong>UGX 145,600</strong>Cash + MoMo
+          </div>
+          <div class="earnings-meta-item">
+            <strong>6h 20m</strong>Online
+          </div>
+          <div class="earnings-meta-item">
+            <strong>94%</strong>Acceptance
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="quick-stats">
+        <div class="quick-stat-card">
+          <div class="qs-icon" style="background:rgba(217,70,239,.12);color:var(--warning);"><i class="fa-solid fa-star"></i></div>
+          <div class="qs-value">4.9</div>
+          <div class="qs-label">Rating</div>
+        </div>
+        <div class="quick-stat-card">
+          <div class="qs-icon" style="background:rgba(40,199,111,.12);color:var(--success);"><i class="fa-solid fa-route"></i></div>
+          <div class="qs-value">142</div>
+          <div class="qs-label">Total Trips</div>
+        </div>
+        <div class="quick-stat-card">
+          <div class="qs-icon" style="background:rgba(0,207,232,.12);color:var(--info);"><i class="fa-solid fa-clock"></i></div>
+          <div class="qs-value">98%</div>
+          <div class="qs-label">Completion</div>
+        </div>
+      </div>
+
+      <!-- Promo Banner -->
+      <div style="background:linear-gradient(135deg,#D946EF 0%,#ff9f43 100%);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+        <div style="font-size:28px;">🎯</div>
+        <div>
+          <div style="font-size:13px;font-weight:800;color:var(--dark);">Peak Hours Bonus!</div>
+          <div style="font-size:11.5px;color:rgba(26,31,46,.7);">Earn 1.5× on all trips between 5PM–9PM today</div>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color:rgba(26,31,46,.5);margin-left:auto;font-size:12px;"></i>
+      </div>
+
+      <!-- Recent Trips -->
+      <div>
+        <div class="section-hdr">
+          <h3>Recent Trips</h3>
+          <a onclick="showScreen('earnings')">See All</a>
+        </div>
+
+        <div class="trip-item">
+          <div class="trip-icon" style="background:rgba(40,199,111,.12);color:var(--success);"><i class="fa-solid fa-check"></i></div>
+          <div class="trip-details">
+            <div class="trip-route">Kampala CBD → Entebbe Airport</div>
+            <div class="trip-meta">James K. · 38km · 52 mins</div>
+          </div>
+          <div>
+            <div class="trip-fare">UGX 45,000</div>
+            <div class="trip-status" style="color:var(--success);">Completed</div>
+          </div>
+        </div>
+
+        <div class="trip-item">
+          <div class="trip-icon" style="background:rgba(40,199,111,.12);color:var(--success);"><i class="fa-solid fa-check"></i></div>
+          <div class="trip-details">
+            <div class="trip-route">Kololo → Mukono</div>
+            <div class="trip-meta">Ruth B. · 22km · 35 mins</div>
+          </div>
+          <div>
+            <div class="trip-fare">UGX 32,000</div>
+            <div class="trip-status" style="color:var(--success);">Completed</div>
+          </div>
+        </div>
+
+        <div class="trip-item">
+          <div class="trip-icon" style="background:rgba(234,84,85,.12);color:var(--danger);"><i class="fa-solid fa-xmark"></i></div>
+          <div class="trip-details">
+            <div class="trip-route">Mengo → Kireka</div>
+            <div class="trip-meta">Tom M. · Cancelled by passenger</div>
+          </div>
+          <div>
+            <div class="trip-fare" style="color:var(--muted);">UGX 0</div>
+            <div class="trip-status" style="color:var(--danger);">Cancelled</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulate incoming request -->
+      <button onclick="showScreen('request')" style="width:100%;padding:14px;background:var(--brand-light);color:var(--brand-dark);border:1.5px dashed var(--brand);border-radius:14px;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px;">
+        <i class="fa-solid fa-bell me-2"></i>Simulate Incoming Trip Request →
+      </button>
+
+    </div><!-- /home-scroll -->
+
+    <!-- Bottom Tab Bar -->
+    <div class="bottom-tab-bar">
+      <div class="tab-item active" data-screen="home">
+        <i class="fa-solid fa-house"></i>Home
+      </div>
+      <div class="tab-item" data-screen="earnings">
+        <i class="fa-solid fa-wallet"></i>Earnings
+      </div>
+      <div class="tab-item" data-screen="active">
+        <i class="fa-solid fa-route"></i>
+        <div class="tab-badge"></div>Trips
+      </div>
+      <div class="tab-item" data-screen="profile">
+        <i class="fa-solid fa-user"></i>Profile
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 4 — NEW TRIP REQUEST
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch">
+    <div class="notch-speaker"></div>
+    <div class="notch-camera"></div>
+  </div>
+  <div class="phone-screen" data-screen="request" style="display:none;">
+
+    <div class="screen-request">
+
+      <!-- Map with route -->
+      <div class="request-map" style="height:280px;flex-shrink:0;">
+        <div class="map-grid"></div>
+        <div class="map-road-h" style="top:40%;"></div>
+        <div class="map-road-v" style="left:50%;"></div>
+        <div class="request-route-line"></div>
+
+        <!-- Status bar -->
+        <div style="position:absolute;top:0;left:0;right:0;">
+          <div class="status-bar transparent-dark" style="position:relative;">
+            <span>9:43</span>
+            <div class="status-icons">
+              <i class="fa-solid fa-signal"></i>
+              <i class="fa-solid fa-wifi"></i>
+              <i class="fa-solid fa-battery-full"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-overlay">
+          <div class="countdown-ring"><span class="countdown-number">25</span></div>
+          <div class="countdown-label">seconds left</div>
+        </div>
+
+        <!-- Distance badge -->
+        <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+                    background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+                    padding:6px 18px;border-radius:20px;color:#fff;font-size:12px;font-weight:600;
+                    display:flex;gap:12px;white-space:nowrap;">
+          <span><i class="fa-solid fa-map-pin me-1" style="color:var(--success);"></i>2.4km away</span>
+          <span><i class="fa-solid fa-road me-1" style="color:var(--brand);"></i>38km trip</span>
+        </div>
+      </div>
+
+      <!-- Bottom sheet -->
+      <div class="request-sheet">
+        <div class="sheet-handle"></div>
+
+        <div class="new-ride-badge">
+          <i class="fa-solid fa-bell"></i> New Ride Request
+        </div>
+
+        <!-- Passenger -->
+        <div class="passenger-info">
+          <div class="passenger-avatar">JK</div>
+          <div>
+            <div class="passenger-name">James Kiggundu</div>
+            <div class="passenger-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>4.9 · 42 trips</span>
+            </div>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:6px;">
+            <button style="width:36px;height:36px;border-radius:10px;background:rgba(40,199,111,.1);color:var(--success);border:none;font-size:14px;cursor:pointer;">
+              <i class="fa-solid fa-phone"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Route -->
+        <div class="route-card">
+          <div class="route-point">
+            <div class="route-dot dot-pickup"><i class="fa-solid fa-circle fa-xs"></i></div>
+            <div class="route-text">
+              <div class="route-title">Pickup</div>
+              <div class="route-address">Shell Bugolobi, Kampala</div>
+              <div class="route-dist">2.4km from you · ~6 mins</div>
+            </div>
+          </div>
+          <div class="route-point">
+            <div class="route-dot dot-dropoff"><i class="fa-solid fa-location-dot fa-xs"></i></div>
+            <div class="route-text">
+              <div class="route-title">Drop-off</div>
+              <div class="route-address">Entebbe International Airport</div>
+              <div class="route-dist">38km total · ~52 mins</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fare row -->
+        <div class="trip-fare-row">
+          <div>
+            <div class="fare-label">Trip Fare</div>
+            <div class="fare-amount">UGX 45,000</div>
+            <div class="fare-note">Surge 1.2× applied</div>
+          </div>
+          <div class="fare-method">
+            <i class="fa-solid fa-mobile-screen"></i> MTN MoMo
+          </div>
+        </div>
+
+        <!-- Accept / Decline -->
+        <div class="action-btns">
+          <button class="btn-decline btn-decline-trip">
+            <i class="fa-solid fa-xmark"></i> Decline
+          </button>
+          <button class="btn-accept btn-accept-trip">
+            <i class="fa-solid fa-check"></i> Accept Ride
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 5 — ACTIVE TRIP
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch">
+    <div class="notch-speaker"></div>
+    <div class="notch-camera"></div>
+  </div>
+  <div class="phone-screen" data-screen="active" style="display:none;">
+
+    <div class="screen-active">
+
+      <!-- Live Map -->
+      <div class="active-map">
+        <div class="map-grid"></div>
+        <div class="map-road-h" style="top:35%;"></div>
+        <div class="map-road-h" style="top:60%;"></div>
+        <div class="map-road-v" style="left:40%;"></div>
+        <div class="map-road-v" style="left:70%;"></div>
+        <div class="route-path"></div>
+        <div class="car-icon">🚗</div>
+
+        <!-- Status bar -->
+        <div style="position:absolute;top:0;left:0;right:0;">
+          <div class="status-bar transparent-dark" style="position:relative;">
+            <span>9:55</span>
+            <div class="status-icons">
+              <i class="fa-solid fa-signal"></i>
+              <i class="fa-solid fa-wifi"></i>
+              <i class="fa-solid fa-battery-full"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map overlays -->
+        <div class="active-map-overlay">
+          <div class="trip-status-pill">
+            <div class="blink"></div> En Route to Pickup
+          </div>
+          <div class="trip-eta-chip">
+            <i class="fa-solid fa-clock" style="color:var(--brand);"></i> ETA 6 min
+          </div>
+        </div>
+
+        <!-- Destination label -->
+        <div style="position:absolute;bottom:14px;left:14px;right:14px;
+                    background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+                    padding:10px 14px;border-radius:14px;
+                    display:flex;align-items:center;gap:10px;">
+          <i class="fa-solid fa-navigation" style="color:var(--brand);font-size:18px;"></i>
+          <div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);">Navigating to pickup</div>
+            <div style="font-size:13px;font-weight:700;color:#fff;">Shell Bugolobi, Kampala</div>
+          </div>
+          <button style="margin-left:auto;background:var(--brand);border:none;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:700;color:var(--dark);cursor:pointer;">
+            <i class="fa-solid fa-diamond-turn-right me-1"></i>Nav
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Trip Sheet -->
+      <div class="active-sheet">
+        <div class="sheet-handle"></div>
+
+        <!-- Progress Steps -->
+        <div class="trip-progress-steps mb-3">
+          <div class="step done">
+            <div class="step-dot"><i class="fa-solid fa-check fa-xs"></i></div>
+            <div class="step-label">Accepted</div>
+          </div>
+          <div class="step-line done"></div>
+          <div class="step active">
+            <div class="step-dot">2</div>
+            <div class="step-label">Pickup</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <div class="step-dot">3</div>
+            <div class="step-label">Trip</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <div class="step-dot">4</div>
+            <div class="step-label">Done</div>
+          </div>
+        </div>
+
+        <!-- Passenger Info -->
+        <div class="active-passenger-card">
+          <div class="active-passenger-avatar">JK</div>
+          <div>
+            <div class="active-passenger-name">James Kiggundu</div>
+            <div class="active-passenger-dest">
+              <i class="fa-solid fa-location-dot"></i> Entebbe Airport
+            </div>
+          </div>
+          <div class="contact-btns">
+            <button class="contact-btn call"><i class="fa-solid fa-phone"></i></button>
+            <button class="contact-btn msg"><i class="fa-solid fa-comment"></i></button>
+          </div>
+        </div>
+
+        <!-- Live Metrics -->
+        <div class="live-metrics">
+          <div class="live-metric">
+            <div class="live-metric-value" style="color:var(--brand);">UGX 45K</div>
+            <div class="live-metric-label">Fare</div>
+          </div>
+          <div class="live-metric">
+            <div class="live-metric-value">38 km</div>
+            <div class="live-metric-label">Distance</div>
+          </div>
+          <div class="live-metric">
+            <div class="live-metric-value">~52 min</div>
+            <div class="live-metric-label">Est. Time</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-strip">
+          <button class="action-strip-btn btn-arrived">
+            <i class="fa-solid fa-map-marker-alt"></i> Arrived
+          </button>
+          <button class="action-strip-btn btn-start-trip">
+            <i class="fa-solid fa-play"></i> Start Trip
+          </button>
+        </div>
+        <div class="action-strip">
+          <button class="action-strip-btn btn-complete btn-complete-trip">
+            <i class="fa-solid fa-flag-checkered"></i> Complete Trip
+          </button>
+          <button class="action-strip-btn btn-sos" style="border:1.5px solid rgba(234,84,85,.25);">
+            <i class="fa-solid fa-triangle-exclamation"></i> SOS
+          </button>
+        </div>
+
+        <!-- Trip Notes -->
+        <div style="background:var(--body-bg);border-radius:12px;padding:12px 14px;margin-top:4px;">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;">Passenger Note</div>
+          <div style="font-size:13px;color:var(--dark);">"Please call when 2 mins away. I'm in the Shell shop."</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 6 — EARNINGS
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch">
+    <div class="notch-speaker"></div>
+    <div class="notch-camera"></div>
+  </div>
+  <div class="phone-screen" data-screen="earnings" style="display:none;">
+
+    <div class="screen-earnings">
+
+      <!-- Header -->
+      <div class="earnings-header">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <div class="status-bar dark" style="position:static;padding:0;height:auto;">
+            <span style="font-size:12px;font-weight:600;">9:41</span>
+          </div>
+          <div class="status-icons" style="color:#fff;">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+        </div>
+
+        <div class="earnings-header-title">Total Earnings</div>
+        <div class="earnings-header-amount">UGX 1,240,000</div>
+        <div class="earnings-header-sub">142 completed trips · 4.9★</div>
+
+        <div class="period-tabs">
+          <div class="period-tab active">Today</div>
+          <div class="period-tab">Week</div>
+          <div class="period-tab">Month</div>
+          <div class="period-tab">Year</div>
+        </div>
+      </div>
+
+      <div class="earnings-body">
+
+        <!-- Payout card -->
+        <div class="payout-card">
+          <div>
+            <div class="payout-card-label">Available for Withdrawal</div>
+            <div class="payout-card-amount">UGX 182,000</div>
+          </div>
+          <button class="btn-withdraw"><i class="fa-solid fa-arrow-up me-1"></i>Withdraw</button>
+        </div>
+
+        <!-- Summary stats -->
+        <div class="row g-2 mb-3">
+          <div class="col-6">
+            <div style="background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;">Trips Today</div>
+              <div style="font-size:22px;font-weight:800;color:var(--dark);margin-top:4px;">12</div>
+              <div style="font-size:11px;color:var(--success);font-weight:600;margin-top:2px;"><i class="fa-solid fa-arrow-up me-1"></i>3 more than yesterday</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;">Online Time</div>
+              <div style="font-size:22px;font-weight:800;color:var(--dark);margin-top:4px;">6h 20m</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Acceptance: <strong style="color:var(--success);">94%</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakdown title -->
+        <div class="section-hdr mb-2">
+          <h3>Today's Trips</h3>
+          <a style="font-size:12px;color:var(--brand);cursor:pointer;">Filter</a>
+        </div>
+
+        <!-- Trip earnings breakdown -->
+        <div class="breakdown-item">
+          <div class="breakdown-icon" style="background:rgba(40,199,111,.12);color:var(--success);">
+            <i class="fa-solid fa-car-side"></i>
+          </div>
+          <div class="breakdown-info">
+            <div class="breakdown-title">Kampala CBD → Entebbe</div>
+            <div class="breakdown-detail">James K. · 38km · 52 mins · MTN MoMo</div>
+          </div>
+          <div class="text-end">
+            <div class="breakdown-amount positive">+45,000</div>
+            <div style="font-size:10px;color:var(--muted);">9:05 AM</div>
+          </div>
+        </div>
+
+        <div class="breakdown-item">
+          <div class="breakdown-icon" style="background:rgba(40,199,111,.12);color:var(--success);">
+            <i class="fa-solid fa-car-side"></i>
+          </div>
+          <div class="breakdown-info">
+            <div class="breakdown-title">Kololo → Mukono</div>
+            <div class="breakdown-detail">Ruth B. · 22km · 35 mins · Airtel</div>
+          </div>
+          <div class="text-end">
+            <div class="breakdown-amount positive">+32,000</div>
+            <div style="font-size:10px;color:var(--muted);">7:30 AM</div>
+          </div>
+        </div>
+
+        <div class="breakdown-item">
+          <div class="breakdown-icon" style="background:rgba(40,199,111,.12);color:var(--success);">
+            <i class="fa-solid fa-car-side"></i>
+          </div>
+          <div class="breakdown-info">
+            <div class="breakdown-title">Ntinda → CBD</div>
+            <div class="breakdown-detail">Sarah M. · 12km · 22 mins · Cash</div>
+          </div>
+          <div class="text-end">
+            <div class="breakdown-amount positive">+18,000</div>
+            <div style="font-size:10px;color:var(--muted);">6:15 AM</div>
+          </div>
+        </div>
+
+        <!-- Commission deduction -->
+        <div class="breakdown-item" style="opacity:.8;">
+          <div class="breakdown-icon" style="background:rgba(234,84,85,.1);color:var(--danger);">
+            <i class="fa-solid fa-percent"></i>
+          </div>
+          <div class="breakdown-info">
+            <div class="breakdown-title">Platform Commission (20%)</div>
+            <div class="breakdown-detail">Deducted automatically</div>
+          </div>
+          <div class="text-end">
+            <div class="breakdown-amount negative">−36,400</div>
+            <div style="font-size:10px;color:var(--muted);">Daily</div>
+          </div>
+        </div>
+
+        <!-- Net total -->
+        <div style="background:var(--dark);border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;margin-top:4px;">
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.7);">Net Earnings Today</div>
+          <div style="font-size:18px;font-weight:800;color:var(--brand);">UGX 145,600</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="bottom-tab-bar">
+      <div class="tab-item" data-screen="home">
+        <i class="fa-solid fa-house"></i>Home
+      </div>
+      <div class="tab-item active" data-screen="earnings">
+        <i class="fa-solid fa-wallet"></i>Earnings
+      </div>
+      <div class="tab-item" data-screen="active">
+        <i class="fa-solid fa-route"></i>Trips
+      </div>
+      <div class="tab-item" data-screen="profile">
+        <i class="fa-solid fa-user"></i>Profile
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 7 — DRIVER PROFILE
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch">
+    <div class="notch-speaker"></div>
+    <div class="notch-camera"></div>
+  </div>
+  <div class="phone-screen" data-screen="profile" style="display:none;">
+
+    <div class="screen-profile">
+
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:16px;">
+          <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.5);">9:41</span>
+          <div style="display:flex;align-items:center;gap:5px;color:#fff;font-size:12px;">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+        </div>
+
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar">PO</div>
+          <div class="profile-edit-btn"><i class="fa-solid fa-camera"></i></div>
+        </div>
+
+        <div class="profile-name">Peter Okello</div>
+        <div class="profile-phone">+256 700 123 456</div>
+        <div class="profile-rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <span>4.9 · 142 ratings</span>
+        </div>
+
+        <!-- Vehicle badge -->
+        <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:6px 14px;margin-top:10px;font-size:12px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:6px;">
+          <i class="fa-solid fa-car" style="color:var(--brand);"></i>
+          UBG 432B · Toyota Wish · Silver
+        </div>
+
+        <!-- Stats row -->
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <div class="profile-stat-value">142</div>
+            <div class="profile-stat-label">Trips</div>
+          </div>
+          <div class="profile-stat">
+            <div class="profile-stat-value">UGX 1.2M</div>
+            <div class="profile-stat-label">Earned</div>
+          </div>
+          <div class="profile-stat">
+            <div class="profile-stat-value">2yr</div>
+            <div class="profile-stat-label">Tenure</div>
+          </div>
+          <div class="profile-stat">
+            <div class="profile-stat-value">98%</div>
+            <div class="profile-stat-label">Complete</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Body -->
+      <div class="profile-body">
+
+        <div class="profile-section-title">Account</div>
+
+        <div class="profile-menu-item">
+          <div class="pm-icon" style="background:rgba(217,70,239,.12);color:var(--brand);"><i class="fa-solid fa-user"></i></div>
+          <div class="pm-text">
+            <div class="pm-title">Personal Information</div>
+            <div class="pm-subtitle">Name, phone, email</div>
+          </div>
+          <i class="fa-solid fa-chevron-right pm-chevron"></i>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="pm-icon" style="background:rgba(40,199,111,.12);color:var(--success);"><i class="fa-solid fa-car"></i></div>
+          <div class="pm-text">
+            <div class="pm-title">My Vehicle</div>
+            <div class="pm-subtitle">UBG 432B · Toyota Wish</div>
+          </div>
+          <i class="fa-solid fa-chevron-right pm-chevron"></i>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="pm-icon" style="background:rgba(0,207,232,.12);color:var(--info);"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div class="pm-text">
+            <div class="pm-title">Payment Method</div>
+            <div class="pm-subtitle">MTN MoMo · +256 700 123 456</div>
+          </div>
+          <i class="fa-solid fa-chevron-right pm-chevron"></i>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="pm-icon" style="background:rgba(115,103,240,.12);color:var(--purple);"><i class="fa-solid fa-file-shield"></i></div>
+          <div class="pm-text">
+            <div class="pm-title">My Documents</div>
+            <div class="pm-subtitle">NIN, Licence, Insurance</div>
+          </div>
+          <span class="pm-badge">1 Expiring</span>
+          <i class="fa-solid fa-chevron-right pm-chevron ms-2"></i>
+        </div>
+
+        <div class="profile-section-title mt-3">Support</div>
+
+        <div class="profile-menu-item">
+          <div class="pm-icon" style="background:rgba(255,159,67,.12);color:var(--warning);"><i class="fa-solid fa-star"></i></div>
+          <div class="pm-text">
+            <div class="pm-title">My Reviews</div>
+            <div class="pm-subtitle">See what passengers say</div>
+          </div>
+          <i class="fa-solid fa-chevron-right pm-chevron"></i>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="pm-icon" style="background:rgba(0,207,232,.12);color:var(--info);"><i class="fa-solid fa-headset"></i></div>
+          <div class="pm-text">
+            <div class="pm-title">Help & Support</div>
+            <div class="pm-subtitle">Chat, call or email us</div>
+          </div>
+          <i class="fa-solid fa-chevron-right pm-chevron"></i>
+        </div>
+
+        <div class="profile-menu-item">
+          <div class="pm-icon" style="background:rgba(234,84,85,.1);color:var(--danger);"><i class="fa-solid fa-right-from-bracket"></i></div>
+          <div class="pm-text">
+            <div class="pm-title" style="color:var(--danger);">Sign Out</div>
+          </div>
+        </div>
+
+        <!-- Version note -->
+        <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:14px;padding-bottom:10px;">
+          Matlex Ride Driver v1.0.0 · Uganda
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="bottom-tab-bar">
+      <div class="tab-item" data-screen="home">
+        <i class="fa-solid fa-house"></i>Home
+      </div>
+      <div class="tab-item" data-screen="earnings">
+        <i class="fa-solid fa-wallet"></i>Earnings
+      </div>
+      <div class="tab-item" data-screen="active">
+        <i class="fa-solid fa-route"></i>Trips
+      </div>
+      <div class="tab-item active" data-screen="profile">
+        <i class="fa-solid fa-user"></i>Profile
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+</div><!-- /phones-grid -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/driver.js"></script>
+</body>
+</html>

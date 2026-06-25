@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../assets/images/Logo1.png" type="image/png">
+  <title>Careers — Matlex Ride</title>
+  <meta name="description" content="Join the Matlex Ride team. Explore open positions and help us build the future of transport in Uganda." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* ── Careers landing hero ── */
+    .careers-landing {
+      padding: 110px 0 70px;
+      background: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+    .careers-landing-copy { position: relative; z-index: 1; }
+    .careers-landing-copy h1 {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+      margin: 16px 0 14px;
+    }
+    .careers-landing-copy h1 span { color: #7C3AED; }
+    .careers-landing-copy > p { font-size: 1.05rem; color: rgba(15,23,42,.6); max-width: 480px; margin-bottom: 36px; }
+    .careers-search {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(15,23,42,.12);
+      border: 1.5px solid rgba(15,23,42,.1);
+      max-width: 520px;
+    }
+    .careers-search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 16px 20px;
+      font-size: .95rem;
+      color: #0f172a;
+      font-family: inherit;
+      background: transparent;
+    }
+    .careers-search input::placeholder { color: rgba(15,23,42,.4); }
+    .careers-search button {
+      border: none;
+      background: linear-gradient(135deg, #7C3AED, #D946EF);
+      color: #fff;
+      padding: 14px 24px;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: opacity .2s;
+    }
+    .careers-search button:hover { opacity: .9; }
+    .careers-landing-stats { display: flex; gap: 32px; margin-top: 32px; flex-wrap: wrap; }
+    .careers-landing-stats div { color: rgba(15,23,42,.6); font-size: .88rem; }
+    .careers-landing-stats strong { display: block; font-size: 1.4rem; font-weight: 800; color: #0f172a; }
+
+    .careers-landing-img-wrap {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+    }
+    .careers-landing-img {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      border-radius: 24px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .careers-landing-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 24px;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 16px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+      white-space: nowrap;
+    }
+    .careers-landing-badge .badge-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #7C3AED, #D946EF);
+      border-radius: 10px;
+      display: grid; place-items: center;
+      color: #fff; font-size: 1rem;
+    }
+    .careers-landing-badge strong { display: block; font-size: .95rem; font-weight: 700; color: #0f172a; }
+    .careers-landing-badge span { font-size: .78rem; color: rgba(15,23,42,.55); }
+
+    @media (max-width: 768px) {
+      .careers-landing { padding: 100px 0 50px; }
+      .careers-landing-img-wrap { margin-top: 40px; }
+      .careers-landing-badge { left: 50%; transform: translateX(-50%); }
+    }
+
+    @media (max-width: 480px) {
+      .careers-search { flex-direction: column; border-radius: 14px; }
+      .careers-search input { padding: 14px 16px; }
+      .careers-search button { width: 100%; padding: 14px; white-space: normal; }
+      .careers-landing-stats { gap: 18px; }
+      .careers-landing-badge { padding: 10px 14px; gap: 10px; }
+      .careers-landing-badge .badge-icon { width: 34px; height: 34px; font-size: .9rem; }
+      .perks-grid { grid-template-columns: 1fr; }
+    }
+
+    .dept-filter { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+    .dept-btn { padding: 8px 20px; border-radius: 999px; border: 1.5px solid rgba(15,23,42,.12); background: #fff; font-size: .88rem; font-weight: 600; color: rgba(15,23,42,.6); cursor: pointer; transition: all .2s; }
+    .dept-btn:hover, .dept-btn.active { background: #7C3AED; color: #fff; border-color: #7C3AED; }
+
+    .job-card { background: #fff; border: 1.5px solid rgba(15,23,42,.08); border-radius: 20px; padding: 28px 32px; transition: box-shadow .25s, transform .25s; display: flex; flex-direction: column; gap: 14px; height: 100%; }
+    .job-card:hover { box-shadow: 0 16px 48px rgba(15,23,42,.1); transform: translateY(-4px); }
+    .job-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .job-tag { font-size: .75rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+    .tag-dept { background: rgba(124,58,237,.1); color: #7C3AED; }
+    .tag-type { background: rgba(14,165,233,.1); color: #0EA5E9; }
+    .tag-location { background: rgba(15,23,42,.06); color: rgba(15,23,42,.6); }
+    .job-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 0; }
+    .job-card p { font-size: .92rem; color: rgba(15,23,42,.6); margin: 0; line-height: 1.65; flex: 1; }
+    .job-card .btn-brand { align-self: flex-start; padding: 10px 24px; font-size: .88rem; margin-top: 4px; }
+
+    .no-openings { text-align: center; padding: 60px 20px; color: rgba(15,23,42,.45); }
+    .no-openings i { font-size: 3rem; display: block; margin-bottom: 16px; }
+
+    .perks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+    .perk-card { background: #fff; border: 1.5px solid rgba(15,23,42,.08); border-radius: 20px; padding: 28px 24px; text-align: center; }
+    .perk-icon { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; font-size: 1.3rem; margin: 0 auto 14px; }
+    .perk-icon-purple { background: rgba(124,58,237,.12); color: #7C3AED; }
+    .perk-icon-blue { background: rgba(14,165,233,.12); color: #0EA5E9; }
+    .perk-icon-green { background: rgba(16,185,129,.12); color: #10B981; }
+    .perk-icon-pink { background: rgba(217,70,239,.12); color: #D946EF; }
+    .perk-card h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .perk-card p { font-size: .88rem; color: rgba(15,23,42,.55); margin: 0; }
+
+    @media (max-width: 600px) {
+      .job-card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  
+<nav class="navbar-main" id="navbar">
+  <div class="container-xl">
+    <div class="navbar-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/Logo1.png" alt="Matlex Ride logo" class="nav-logo-img">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="careers.html" class="active" aria-current="page">Careers</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-drop-toggle">Join us <i class="fa-solid fa-chevron-down nav-drop-icon"></i></a>
+          <ul class="nav-drop-menu">
+            <li><a href="../client/index.html"><i class="fa-solid fa-user"></i> Passenger App</a></li>
+            <li><a href="../driver/index.html"><i class="fa-solid fa-car"></i> Driver App</a></li>
+            <li><a href="login.html"><i class="fa-solid fa-building"></i> Business Account</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="../client/index.html" class="btn-brand">Book a Ride</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="features.html">Features</a>
+  <a href="services.html">Services</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-nav-join-label">Join us</div>
+  <div class="mobile-nav-ctas">
+    <a href="../client/index.html">Passenger App</a>
+    <a href="../driver/index.html">Driver App</a>
+    <a href="login.html">Business Account</a>
+  </div>
+</div>
+
+<!-- Landing hero -->
+<section class="careers-landing">
+  <div class="container-xl">
+    <div class="row align-items-center gy-5">
+
+      <div class="col-lg-6 careers-landing-copy reveal">
+        <span class="section-tag"><i class="fa-solid fa-briefcase"></i> We're hiring</span>
+        <h1>Build the future</h1>
+        <p>Join a fast-moving team solving real problems for riders and drivers every day. We care about impact, ownership, and growing together.</p>
+
+        <div class="careers-search">
+          <input type="text" placeholder="Search roles, departments…" id="jobSearch" aria-label="Search open positions" />
+          <button type="button" onclick="document.getElementById('openings').scrollIntoView({behavior:'smooth'})">
+            Find an opportunity
+          </button>
+        </div>
+
+        <div class="careers-landing-stats">
+          <div><strong>6+</strong> Open roles</div>
+          <div><strong>4</strong> Departments</div>
+          <div><strong>100%</strong> Impact-driven</div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 reveal reveal-delay-2">
+        <div class="careers-landing-img-wrap">
+          <img src="../assets/images/hire.webp" alt="Matlex Ride team" class="careers-landing-img">
+          <div class="careers-landing-badge">
+            <div class="badge-icon"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <strong>Great teammates</strong>
+              <span>Diverse, ambitious crew</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Open positions -->
+<section class="section-py" id="openings">
+  <div class="container-xl">
+    <div class="section-head text-center mb-4 reveal">
+      <span class="section-tag"><i class="fa-solid fa-magnifying-glass"></i> Open positions</span>
+      <h2>Find your role</h2>
+      <p>We're growing across engineering, operations, and business. See what's open below.</p>
+    </div>
+
+    <!-- Department filter -->
+    <div class="dept-filter reveal">
+      <button class="dept-btn active" data-dept="all">All</button>
+      <button class="dept-btn" data-dept="engineering">Engineering</button>
+      <button class="dept-btn" data-dept="operations">Operations</button>
+      <button class="dept-btn" data-dept="business">Business</button>
+      <button class="dept-btn" data-dept="design">Design</button>
+      <button class="dept-btn" data-dept="support">Support</button>
+    </div>
+
+    <!-- Job listings -->
+    <div class="row g-4" id="jobListings">
+
+      <div class="col-md-6 col-lg-4 reveal job-item" data-dept="engineering">
+        <div class="job-card">
+          <div class="job-meta">
+            <span class="job-tag tag-dept">Engineering</span>
+            <span class="job-tag tag-type">Full-time</span>
+            <span class="job-tag tag-location"><i class="fa-solid fa-location-dot"></i> Kampala</span>
+          </div>
+          <h3>Mobile Developer (Android)</h3>
+          <p>Build and maintain the Matlex Ride passenger and driver Android apps. You'll own features end-to-end from design spec to the Play Store.</p>
+          <a href="contact.html" class="btn-brand">Apply now</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1 job-item" data-dept="engineering">
+        <div class="job-card">
+          <div class="job-meta">
+            <span class="job-tag tag-dept">Engineering</span>
+            <span class="job-tag tag-type">Full-time</span>
+            <span class="job-tag tag-location"><i class="fa-solid fa-location-dot"></i> Remote</span>
+          </div>
+          <h3>Backend Engineer (Node.js)</h3>
+          <p>Design and scale the APIs powering real-time ride matching, payments, and driver dispatch across Uganda.</p>
+          <a href="contact.html" class="btn-brand">Apply now</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2 job-item" data-dept="design">
+        <div class="job-card">
+          <div class="job-meta">
+            <span class="job-tag tag-dept">Design</span>
+            <span class="job-tag tag-type">Full-time</span>
+            <span class="job-tag tag-location"><i class="fa-solid fa-location-dot"></i> Kampala</span>
+          </div>
+          <h3>Product Designer (UI/UX)</h3>
+          <p>Craft simple, beautiful experiences for our rider and driver apps. You'll work closely with engineering and product from concept to launch.</p>
+          <a href="contact.html" class="btn-brand">Apply now</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal job-item" data-dept="operations">
+        <div class="job-card">
+          <div class="job-meta">
+            <span class="job-tag tag-dept">Operations</span>
+            <span class="job-tag tag-type">Full-time</span>
+            <span class="job-tag tag-location"><i class="fa-solid fa-location-dot"></i> Kampala</span>
+          </div>
+          <h3>Driver Onboarding Officer</h3>
+          <p>Recruit, verify, and onboard new drivers. You're the first face of Matlex Ride for our driver community and the guardian of quality on the platform.</p>
+          <a href="contact.html" class="btn-brand">Apply now</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1 job-item" data-dept="business">
+        <div class="job-card">
+          <div class="job-meta">
+            <span class="job-tag tag-dept">Business</span>
+            <span class="job-tag tag-type">Full-time</span>
+            <span class="job-tag tag-location"><i class="fa-solid fa-location-dot"></i> Kampala</span>
+          </div>
+          <h3>Business Development Manager</h3>
+          <p>Grow our corporate and partner accounts. You'll identify opportunities, close deals, and build long-term relationships with businesses across Uganda.</p>
+          <a href="contact.html" class="btn-brand">Apply now</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2 job-item" data-dept="support">
+        <div class="job-card">
+          <div class="job-meta">
+            <span class="job-tag tag-dept">Support</span>
+            <span class="job-tag tag-type">Part-time</span>
+            <span class="job-tag tag-location"><i class="fa-solid fa-location-dot"></i> Kampala</span>
+          </div>
+          <h3>Customer Support Agent</h3>
+          <p>Be the voice of Matlex Ride — resolve rider and driver issues quickly and empathetically via chat, call, and email on rotating shifts.</p>
+          <a href="contact.html" class="btn-brand">Apply now</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- End job listings -->
+
+  </div>
+</section>
+
+<!-- Spontaneous application CTA -->
+<section class="section-py cta-section" aria-label="Spontaneous application">
+  <div class="container-xl">
+    <div class="cta-panel reveal">
+      <div>
+        <span class="section-tag cta-tag"><i class="fa-solid fa-envelope"></i> Don't see your role?</span>
+        <h2>Send us a spontaneous application</h2>
+        <p style="color:rgba(15,23,42,.6);margin-top:10px;max-width:520px;">We're always interested in talented people. Tell us what you do and how you'd like to contribute — we'll be in touch if there's a fit.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-brand">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container-xl">
+    <div class="row gy-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">
+          <img src="../assets/images/Logo1.png" alt="Matlex Ride logo" class="footer-logo-img">
+          <div>
+            <div class="footer-logo-name">Matlex Ride</div>
+            <div class="footer-logo-sub">Uganda</div>
+          </div>
+        </div>
+        <p class="footer-desc">Join our team and help build the future of transport across Uganda.</p>
+        <div class="footer-contact">
+          <a href="tel:+256709508211"><i class="fa-solid fa-phone"></i> +256 709 508 211</a>
+          <a href="mailto:hello@matlexride.ug"><i class="fa-solid fa-envelope"></i> info@matlexride.ug</a>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Products</div>
+        <ul class="footer-links">
+          <li><a href="../client/index.html">Passenger App</a></li>
+          <li><a href="../driver/index.html">Driver App</a></li>
+          <li><a href="contact.html">Become a Partner</a></li>
+          <li><a href="contact.html">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Safety</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Get the app</div>
+        <div class="footer-badges">
+          <a href="#" class="store-badge-link"><img src="../assets/images/google-play-badge.svg" alt="Google Play" class="store-badge"></a>
+          <a href="#" class="store-badge-link"><img src="../assets/images/app-store-badge.svg" alt="App Store" class="store-badge"></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a href="#" class="social-icon si-tiktok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="social-icon si-youtube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="social-icon si-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" class="social-icon si-instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon si-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-icon si-x"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="back-to-top" title="Back to top"><i class="fa-solid fa-chevron-up"></i></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+  // Department filter
+  document.querySelectorAll('.dept-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.dept-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const dept = btn.dataset.dept;
+      document.querySelectorAll('.job-item').forEach(item => {
+        item.style.display = (dept === 'all' || item.dataset.dept === dept) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

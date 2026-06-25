@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Matlex Ride — Admin Panel</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body>
+
+<!-- ======================================================
+     SIDEBAR OVERLAY (mobile backdrop)
+     ====================================================== -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ======================================================
+     SIDEBAR
+     ====================================================== -->
+<aside class="sidebar" id="sidebar">
+
+  <!-- Brand -->
+  <div class="sidebar-brand">
+    
+    <div class="brand-text">
+      <div class="brand-name">Matlex Ride</div>
+      <div class="brand-sub">Admin Panel</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-nav">
+
+    <div class="sidebar-section-title">Main</div>
+
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="dashboard">
+        <i class="fa-solid fa-gauge-high"></i>
+        <span>Dashboard</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section-title">Fleet Management</div>
+
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="drivers">
+        <i class="fa-solid fa-id-card"></i>
+        <span>Drivers</span>
+        <span class="nav-badge">12</span>
+      </div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="passengers">
+        <i class="fa-solid fa-users"></i>
+        <span>Passengers</span>
+      </div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="trips">
+        <i class="fa-solid fa-route"></i>
+        <span>Trips</span>
+        <span class="nav-badge">3</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section-title">Corporate</div>
+
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="business">
+        <i class="fa-solid fa-building"></i>
+        <span>Business Accounts</span>
+        <span class="nav-badge" id="navBusinessBadge" style="display:none;">0</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section-title">Finance</div>
+
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="payments">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Payments</span>
+      </div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="reports">
+        <i class="fa-solid fa-chart-column"></i>
+        <span>Reports</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section-title">System</div>
+
+    <div class="nav-item">
+      <div class="nav-link-item" data-page="settings">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings</span>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- User Footer -->
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="user-avatar" style="width:34px;height:34px;border-radius:50%;background:#D946EF;display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px;border:2px solid #D946EF;flex-shrink:0;">A</div>
+      <div class="user-info">
+        <div class="user-name">Alex Namurinda</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+      <i class="fa-solid fa-right-from-bracket" style="color:rgba(255,255,255,.3);font-size:14px;"></i>
+    </div>
+  </div>
+
+</aside>
+
+<!-- ======================================================
+     TOPBAR
+     ====================================================== -->
+<header class="topbar">
+  <button class="btn-sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <div class="topbar-breadcrumb">
+    Matlex Ride / <span id="pageTitle">Dashboard</span>
+  </div>
+
+  <div class="topbar-search">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="search" placeholder="Search drivers, trips…" />
+  </div>
+
+  <div class="topbar-actions">
+    <button class="topbar-icon-btn" title="Notifications">
+      <i class="fa-solid fa-bell"></i>
+      <span class="badge-dot"></span>
+    </button>
+    <button class="topbar-icon-btn" title="Messages">
+      <i class="fa-solid fa-message"></i>
+    </button>
+    <div class="user-avatar topbar-avatar" style="width:34px;height:34px;border-radius:50%;background:#D946EF;display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px;border:2px solid #D946EF;cursor:pointer;">A</div>
+  </div>
+</header>
+
+<!-- ======================================================
+     MAIN CONTENT
+     ====================================================== -->
+<main class="main-content">
+<div class="page-content">
+
+
+  <!-- ====================================================
+       PAGE: DASHBOARD
+       ==================================================== -->
+  <section class="page-section" id="page-dashboard">
+
+    <div class="page-header">
+      <h1>Dashboard Overview</h1>
+      <p>Welcome back, Alex. Here's what's happening with Matlex Ride today.</p>
+    </div>
+
+    <!-- Stat Cards Row -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon yellow"><i class="fa-solid fa-car"></i></div>
+          <div class="stat-info">
+            <div class="stat-value" data-count="148">0</div>
+            <div class="stat-label">Total Trips Today</div>
+            <div class="stat-change up"><i class="fa-solid fa-arrow-up"></i> 12% vs yesterday</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-id-card"></i></div>
+          <div class="stat-info">
+            <div class="stat-value" data-count="64">0</div>
+            <div class="stat-label">Active Drivers</div>
+            <div class="stat-change up"><i class="fa-solid fa-arrow-up"></i> 4 new this week</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-ugandan-shilling-sign"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">UGX <span data-count="3820000">0</span></div>
+            <div class="stat-label">Revenue Today</div>
+            <div class="stat-change up"><i class="fa-solid fa-arrow-up"></i> 8.3% vs yesterday</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-info">
+            <div class="stat-value" data-count="2340">0</div>
+            <div class="stat-label">Total Passengers</div>
+            <div class="stat-change up"><i class="fa-solid fa-arrow-up"></i> 23 new today</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Stats -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-sm-3">
+        <div class="card-panel p-3 text-center">
+          <div class="fw-bold" style="font-size:22px;color:#28c76f;" data-count="127">0</div>
+          <div style="font-size:12px;color:var(--text-muted);">Completed</div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-3">
+        <div class="card-panel p-3 text-center">
+          <div class="fw-bold" style="font-size:22px;color:#ea5455;" data-count="8">0</div>
+          <div style="font-size:12px;color:var(--text-muted);">Cancelled</div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-3">
+        <div class="card-panel p-3 text-center">
+          <div class="fw-bold" style="font-size:22px;color:#00cfe8;" data-count="3">0</div>
+          <div style="font-size:12px;color:var(--text-muted);">In Progress</div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-3">
+        <div class="card-panel p-3 text-center">
+          <div class="fw-bold" style="font-size:22px;color:#ff9f43;" data-count="10">0</div>
+          <div style="font-size:12px;color:var(--text-muted);">Pending</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row g-3 mb-4">
+      <!-- Earnings Chart -->
+      <div class="col-12 col-lg-8">
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <h6 class="card-panel-title">Monthly Revenue (2025)</h6>
+            <select class="form-select form-select-sm" style="width:auto;font-size:12px;">
+              <option>2025</option>
+              <option>2024</option>
+            </select>
+          </div>
+          <div class="card-panel-body">
+            <div class="chart-wrapper" style="height:220px;">
+              <canvas id="earningsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Trips Donut -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-panel h-100">
+          <div class="card-panel-header">
+            <h6 class="card-panel-title">Trip Status</h6>
+          </div>
+          <div class="card-panel-body">
+            <div class="chart-wrapper" style="height:220px;">
+              <canvas id="tripsDonut"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="row g-3">
+      <!-- Recent Trips -->
+      <div class="col-12 col-lg-7">
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <h6 class="card-panel-title">Recent Trips</h6>
+            <button class="btn-outline-brand btn-sm" onclick="navigateTo('trips')">View All</button>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Trip ID</th>
+                  <th>Passenger</th>
+                  <th class="hide-mobile">Driver</th>
+                  <th>Route</th>
+                  <th>Fare</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span style="font-weight:600;color:var(--brand);">#TRP-1082</span></td>
+                  <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#7367f0;color:#fff;">JK</div><span style="font-size:13px;">James K.</span></div></td>
+                  <td class="hide-mobile">Peter O.</td>
+                  <td style="font-size:12px;">Kampala → Entebbe</td>
+                  <td style="font-weight:600;">UGX 45,000</td>
+                  <td><span class="status-pill pill-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-weight:600;color:var(--brand);">#TRP-1081</span></td>
+                  <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#00cfe8;color:#fff;">SM</div><span style="font-size:13px;">Sarah M.</span></div></td>
+                  <td class="hide-mobile">David N.</td>
+                  <td style="font-size:12px;">Ntinda → CBD</td>
+                  <td style="font-weight:600;">UGX 18,000</td>
+                  <td><span class="status-pill pill-info">In Progress</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-weight:600;color:var(--brand);">#TRP-1080</span></td>
+                  <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#28c76f;color:#fff;">RB</div><span style="font-size:13px;">Ruth B.</span></div></td>
+                  <td class="hide-mobile">Moses K.</td>
+                  <td style="font-size:12px;">Kololo → Mukono</td>
+                  <td style="font-weight:600;">UGX 32,000</td>
+                  <td><span class="status-pill pill-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-weight:600;color:var(--brand);">#TRP-1079</span></td>
+                  <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#ea5455;color:#fff;">TM</div><span style="font-size:13px;">Tom M.</span></div></td>
+                  <td class="hide-mobile">Grace A.</td>
+                  <td style="font-size:12px;">Mengo → Kireka</td>
+                  <td style="font-weight:600;">UGX 22,000</td>
+                  <td><span class="status-pill pill-danger">Cancelled</span></td>
+                </tr>
+                <tr>
+                  <td><span style="font-weight:600;color:var(--brand);">#TRP-1078</span></td>
+                  <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#ff9f43;color:#fff;">AN</div><span style="font-size:13px;">Alice N.</span></div></td>
+                  <td class="hide-mobile">John S.</td>
+                  <td style="font-size:12px;">Muyenga → Wandegeya</td>
+                  <td style="font-weight:600;">UGX 28,000</td>
+                  <td><span class="status-pill pill-warning">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekly trips + Activity -->
+      <div class="col-12 col-sm-6 col-lg-5">
+        <div class="card-panel mb-3">
+          <div class="card-panel-header">
+            <h6 class="card-panel-title">Trips This Week</h6>
+          </div>
+          <div class="card-panel-body">
+            <div class="chart-wrapper" style="height:160px;">
+              <canvas id="weeklyTrips"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card-panel">
+          <div class="card-panel-header">
+            <h6 class="card-panel-title">Recent Activity</h6>
+          </div>
+          <div class="card-panel-body">
+            <ul class="timeline">
+              <li class="timeline-item">
+                <div class="timeline-dot" style="background:rgba(40,199,111,.15);color:#28c76f;"><i class="fa-solid fa-user-plus fa-xs"></i></div>
+                <div class="timeline-content">
+                  <p class="timeline-title">New driver registered — Peter Okello</p>
+                  <span class="timeline-time">2 mins ago</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-dot" style="background:rgba(255,159,67,.15);color:#ff9f43;"><i class="fa-solid fa-car fa-xs"></i></div>
+                <div class="timeline-content">
+                  <p class="timeline-title">Trip #TRP-1082 completed successfully</p>
+                  <span class="timeline-time">14 mins ago</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-dot" style="background:rgba(0,207,232,.15);color:#00cfe8;"><i class="fa-solid fa-money-bill fa-xs"></i></div>
+                <div class="timeline-content">
+                  <p class="timeline-title">Payment of UGX 45,000 received via MTN MoMo</p>
+                  <span class="timeline-time">15 mins ago</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-dot" style="background:rgba(234,84,85,.15);color:#ea5455;"><i class="fa-solid fa-triangle-exclamation fa-xs"></i></div>
+                <div class="timeline-content">
+                  <p class="timeline-title">Trip #TRP-1079 cancelled by passenger</p>
+                  <span class="timeline-time">32 mins ago</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /dashboard -->
+
+
+  <!-- ====================================================
+       PAGE: DRIVERS
+       ==================================================== -->
+  <section class="page-section" id="page-drivers">
+
+    <div class="page-header d-flex flex-wrap align-items-start justify-content-between gap-2">
+      <div>
+        <h1>Drivers</h1>
+        <p>Manage all registered drivers on the Matlex Ride platform.</p>
+      </div>
+      <button class="btn-brand" data-bs-toggle="modal" data-bs-target="#addDriverModal">
+        <i class="fa-solid fa-plus me-1"></i> Add Driver
+      </button>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="card-panel mb-3">
+      <div class="card-panel-body py-2">
+        <div class="row g-2 align-items-center">
+          <div class="col-12 col-sm-5 col-md-4">
+            <div class="topbar-search w-100">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" class="form-control-sm w-100 ps-5" placeholder="Search drivers…" style="padding-left:34px;" />
+            </div>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <select class="form-select form-select-sm">
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Suspended</option>
+            </select>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <select class="form-select form-select-sm">
+              <option>All Vehicles</option>
+              <option>Saloon</option>
+              <option>SUV</option>
+              <option>Boda</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Driver Cards (mobile-friendly grid) -->
+    <div class="row g-3 mb-4" id="driverCards">
+
+      <!-- Driver Card Template x6 -->
+      <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card-panel p-3">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="user-avatar" style="width:48px;height:48px;font-size:18px;background:#7367f0;color:#fff;border-radius:50%;display:grid;place-items:center;flex-shrink:0;">PO</div>
+            <div class="flex-1">
+              <div class="fw-bold" style="font-size:14px;">Peter Okello</div>
+              <div style="font-size:12px;color:var(--text-muted);">UBG 432B · Toyota Wish</div>
+              <div class="star-rating">★★★★★ <span style="font-size:11px;color:var(--text-muted);">4.9</span></div>
+            </div>
+            <span class="status-pill pill-success">Active</span>
+          </div>
+          <div class="row g-2 text-center" style="font-size:12px;">
+            <div class="col-4">
+              <div class="fw-bold" style="font-size:16px;color:#3b3f5c;">142</div>
+              <div style="color:var(--text-muted);">Trips</div>
+            </div>
+            <div class="col-4">
+              <div class="fw-bold" style="font-size:16px;color:#3b3f5c;">UGX 1.2M</div>
+              <div style="color:var(--text-muted);">Earned</div>
+            </div>
+            <div class="col-4">
+              <div class="fw-bold" style="font-size:16px;color:#3b3f5c;">2yr</div>
+              <div style="color:var(--text-muted);">Tenure</div>
+            </div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm flex-fill" style="background:rgba(247,183,49,.12);color:#d4991e;border:none;border-radius:8px;font-size:12px;font-weight:600;">View Profile</button>
+            <button class="btn btn-sm flex-fill" style="background:rgba(40,199,111,.12);color:#28c76f;border:none;border-radius:8px;font-size:12px;font-weight:600;">Message</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card-panel p-3">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="user-avatar" style="width:48px;height:48px;font-size:18px;background:#00cfe8;color:#fff;border-radius:50%;display:grid;place-items:center;flex-shrink:0;">DN</div>
+            <div class="flex-1">
+              <div class="fw-bold" style="font-size:14px;">David Nsubuga</div>
+              <div style="font-size:12px;color:var(--text-muted);">UBF 710K · Toyota Premio</div>
+              <div class="star-rating">★★★★☆ <span style="font-size:11px;color:var(--text-muted);">4.6</span></div>
+            </div>
+            <span class="status-pill pill-success">Active</span>
+          </div>
+          <div class="row g-2 text-center" style="font-size:12px;">
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">98</div><div style="color:var(--text-muted);">Trips</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">UGX 820K</div><div style="color:var(--text-muted);">Earned</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">1yr</div><div style="color:var(--text-muted);">Tenure</div></div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm flex-fill" style="background:rgba(247,183,49,.12);color:#d4991e;border:none;border-radius:8px;font-size:12px;font-weight:600;">View Profile</button>
+            <button class="btn btn-sm flex-fill" style="background:rgba(40,199,111,.12);color:#28c76f;border:none;border-radius:8px;font-size:12px;font-weight:600;">Message</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card-panel p-3">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="user-avatar" style="width:48px;height:48px;font-size:18px;background:#28c76f;color:#fff;border-radius:50%;display:grid;place-items:center;flex-shrink:0;">MK</div>
+            <div class="flex-1">
+              <div class="fw-bold" style="font-size:14px;">Moses Kato</div>
+              <div style="font-size:12px;color:var(--text-muted);">UBJ 228C · Honda Fit</div>
+              <div class="star-rating">★★★★★ <span style="font-size:11px;color:var(--text-muted);">4.8</span></div>
+            </div>
+            <span class="status-pill pill-warning">On Trip</span>
+          </div>
+          <div class="row g-2 text-center" style="font-size:12px;">
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">215</div><div style="color:var(--text-muted);">Trips</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">UGX 1.8M</div><div style="color:var(--text-muted);">Earned</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">3yr</div><div style="color:var(--text-muted);">Tenure</div></div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm flex-fill" style="background:rgba(247,183,49,.12);color:#d4991e;border:none;border-radius:8px;font-size:12px;font-weight:600;">View Profile</button>
+            <button class="btn btn-sm flex-fill" style="background:rgba(40,199,111,.12);color:#28c76f;border:none;border-radius:8px;font-size:12px;font-weight:600;">Message</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card-panel p-3">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="user-avatar" style="width:48px;height:48px;font-size:18px;background:#D946EF;color:#fff;border-radius:50%;display:grid;place-items:center;flex-shrink:0;">GA</div>
+            <div class="flex-1">
+              <div class="fw-bold" style="font-size:14px;">Grace Achen</div>
+              <div style="font-size:12px;color:var(--text-muted);">UBH 551P · Nissan Note</div>
+              <div class="star-rating">★★★★☆ <span style="font-size:11px;color:var(--text-muted);">4.5</span></div>
+            </div>
+            <span class="status-pill pill-secondary">Offline</span>
+          </div>
+          <div class="row g-2 text-center" style="font-size:12px;">
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">76</div><div style="color:var(--text-muted);">Trips</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">UGX 640K</div><div style="color:var(--text-muted);">Earned</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">8mo</div><div style="color:var(--text-muted);">Tenure</div></div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm flex-fill" style="background:rgba(247,183,49,.12);color:#d4991e;border:none;border-radius:8px;font-size:12px;font-weight:600;">View Profile</button>
+            <button class="btn btn-sm flex-fill" style="background:rgba(40,199,111,.12);color:#28c76f;border:none;border-radius:8px;font-size:12px;font-weight:600;">Message</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card-panel p-3">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="user-avatar" style="width:48px;height:48px;font-size:18px;background:#ea5455;color:#fff;border-radius:50%;display:grid;place-items:center;flex-shrink:0;">JS</div>
+            <div class="flex-1">
+              <div class="fw-bold" style="font-size:14px;">John Ssemwanga</div>
+              <div style="font-size:12px;color:var(--text-muted);">UBE 904M · Toyota Axio</div>
+              <div class="star-rating">★★★☆☆ <span style="font-size:11px;color:var(--text-muted);">3.8</span></div>
+            </div>
+            <span class="status-pill pill-danger">Suspended</span>
+          </div>
+          <div class="row g-2 text-center" style="font-size:12px;">
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">54</div><div style="color:var(--text-muted);">Trips</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">UGX 430K</div><div style="color:var(--text-muted);">Earned</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">5mo</div><div style="color:var(--text-muted);">Tenure</div></div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm flex-fill" style="background:rgba(247,183,49,.12);color:#d4991e;border:none;border-radius:8px;font-size:12px;font-weight:600;">View Profile</button>
+            <button class="btn btn-sm flex-fill" style="background:rgba(234,84,85,.12);color:#ea5455;border:none;border-radius:8px;font-size:12px;font-weight:600;">Review</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card-panel p-3">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="user-avatar" style="width:48px;height:48px;font-size:18px;background:#ff9f43;color:#fff;border-radius:50%;display:grid;place-items:center;flex-shrink:0;">RM</div>
+            <div class="flex-1">
+              <div class="fw-bold" style="font-size:14px;">Richard Mutebe</div>
+              <div style="font-size:12px;color:var(--text-muted);">UBC 167W · Subaru Outback</div>
+              <div class="star-rating">★★★★★ <span style="font-size:11px;color:var(--text-muted);">5.0</span></div>
+            </div>
+            <span class="status-pill pill-success">Active</span>
+          </div>
+          <div class="row g-2 text-center" style="font-size:12px;">
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">310</div><div style="color:var(--text-muted);">Trips</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">UGX 2.6M</div><div style="color:var(--text-muted);">Earned</div></div>
+            <div class="col-4"><div class="fw-bold" style="font-size:16px;color:#3b3f5c;">4yr</div><div style="color:var(--text-muted);">Tenure</div></div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm flex-fill" style="background:rgba(247,183,49,.12);color:#d4991e;border:none;border-radius:8px;font-size:12px;font-weight:600;">View Profile</button>
+            <button class="btn btn-sm flex-fill" style="background:rgba(40,199,111,.12);color:#28c76f;border:none;border-radius:8px;font-size:12px;font-weight:600;">Message</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /driver cards -->
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <span style="font-size:12px;color:var(--text-muted);">Showing 1–6 of 64 drivers</span>
+      <nav>
+        <ul class="pagination pagination-sm mb-0" style="gap:4px;">
+          <li class="page-item disabled"><a class="page-link" style="border-radius:6px;">‹</a></li>
+          <li class="page-item active"><a class="page-link" style="background:var(--brand);border-color:var(--brand);color:#1a1f2e;border-radius:6px;">1</a></li>
+          <li class="page-item"><a class="page-link" style="border-radius:6px;">2</a></li>
+          <li class="page-item"><a class="page-link" style="border-radius:6px;">3</a></li>
+          <li class="page-item"><a class="page-link" style="border-radius:6px;">›</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </section><!-- /drivers -->
+
+
+  <!-- ====================================================
+       PAGE: PASSENGERS
+       ==================================================== -->
+  <section class="page-section" id="page-passengers">
+
+    <div class="page-header">
+      <h1>Passengers</h1>
+      <p>All registered passengers on the Matlex Ride platform.</p>
+    </div>
+
+    <div class="card-panel">
+      <div class="card-panel-header">
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          <h6 class="card-panel-title mb-0">Passenger List</h6>
+          <span class="status-pill pill-info ms-2">2,340 Total</span>
+        </div>
+        <div class="d-flex gap-2">
+          <input type="search" class="form-control form-control-sm" placeholder="Search…" style="width:160px;border-radius:8px;" />
+          <button class="btn-brand btn-sm"><i class="fa-solid fa-file-export me-1"></i>Export</button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th class="hide-mobile">Phone</th>
+              <th>Total Trips</th>
+              <th class="hide-mobile">Spent</th>
+              <th>Rating Given</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--text-muted);font-size:12px;">001</td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:30px;height:30px;font-size:11px;background:#7367f0;color:#fff;">JK</div><div><div class="user-name-cell">James Kiggundu</div><div class="user-sub-cell">james@gmail.com</div></div></div></td>
+              <td class="hide-mobile" style="font-size:13px;">+256 700 123 456</td>
+              <td><strong>42</strong></td>
+              <td class="hide-mobile">UGX 1.8M</td>
+              <td><span class="star-rating">★★★★★</span></td>
+              <td><span class="status-pill pill-success">Active</span></td>
+              <td><button class="btn btn-sm" style="background:var(--body-bg);border:none;border-radius:6px;font-size:12px;"><i class="fa-solid fa-ellipsis"></i></button></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-size:12px;">002</td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:30px;height:30px;font-size:11px;background:#28c76f;color:#fff;">SM</div><div><div class="user-name-cell">Sarah Mugisha</div><div class="user-sub-cell">sarah.m@gmail.com</div></div></div></td>
+              <td class="hide-mobile" style="font-size:13px;">+256 751 789 000</td>
+              <td><strong>28</strong></td>
+              <td class="hide-mobile">UGX 960K</td>
+              <td><span class="star-rating">★★★★☆</span></td>
+              <td><span class="status-pill pill-success">Active</span></td>
+              <td><button class="btn btn-sm" style="background:var(--body-bg);border:none;border-radius:6px;font-size:12px;"><i class="fa-solid fa-ellipsis"></i></button></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-size:12px;">003</td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:30px;height:30px;font-size:11px;background:#D946EF;color:#fff;">RB</div><div><div class="user-name-cell">Ruth Birungi</div><div class="user-sub-cell">r.birungi@email.com</div></div></div></td>
+              <td class="hide-mobile" style="font-size:13px;">+256 782 334 512</td>
+              <td><strong>15</strong></td>
+              <td class="hide-mobile">UGX 480K</td>
+              <td><span class="star-rating">★★★★★</span></td>
+              <td><span class="status-pill pill-success">Active</span></td>
+              <td><button class="btn btn-sm" style="background:var(--body-bg);border:none;border-radius:6px;font-size:12px;"><i class="fa-solid fa-ellipsis"></i></button></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-size:12px;">004</td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:30px;height:30px;font-size:11px;background:#ea5455;color:#fff;">TM</div><div><div class="user-name-cell">Tom Mwesigye</div><div class="user-sub-cell">tmwesigye@gmail.com</div></div></div></td>
+              <td class="hide-mobile" style="font-size:13px;">+256 704 900 211</td>
+              <td><strong>7</strong></td>
+              <td class="hide-mobile">UGX 224K</td>
+              <td><span class="star-rating">★★★☆☆</span></td>
+              <td><span class="status-pill pill-warning">Flagged</span></td>
+              <td><button class="btn btn-sm" style="background:var(--body-bg);border:none;border-radius:6px;font-size:12px;"><i class="fa-solid fa-ellipsis"></i></button></td>
+            </tr>
+            <tr>
+              <td style="color:var(--text-muted);font-size:12px;">005</td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:30px;height:30px;font-size:11px;background:#00cfe8;color:#fff;">AN</div><div><div class="user-name-cell">Alice Nakato</div><div class="user-sub-cell">alice.n@email.com</div></div></div></td>
+              <td class="hide-mobile" style="font-size:13px;">+256 772 456 788</td>
+              <td><strong>33</strong></td>
+              <td class="hide-mobile">UGX 1.1M</td>
+              <td><span class="star-rating">★★★★★</span></td>
+              <td><span class="status-pill pill-success">Active</span></td>
+              <td><button class="btn btn-sm" style="background:var(--body-bg);border:none;border-radius:6px;font-size:12px;"><i class="fa-solid fa-ellipsis"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-panel-body pt-2">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <span style="font-size:12px;color:var(--text-muted);">Showing 1–5 of 2,340</span>
+          <nav><ul class="pagination pagination-sm mb-0" style="gap:4px;">
+            <li class="page-item disabled"><a class="page-link" style="border-radius:6px;">‹</a></li>
+            <li class="page-item active"><a class="page-link" style="background:var(--brand);border-color:var(--brand);color:#1a1f2e;border-radius:6px;">1</a></li>
+            <li class="page-item"><a class="page-link" style="border-radius:6px;">2</a></li>
+            <li class="page-item"><a class="page-link" style="border-radius:6px;">›</a></li>
+          </ul></nav>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /passengers -->
+
+
+  <!-- ====================================================
+       PAGE: TRIPS
+       ==================================================== -->
+  <section class="page-section" id="page-trips">
+
+    <div class="page-header">
+      <h1>Trips</h1>
+      <p>Full log of all rides on the platform.</p>
+    </div>
+
+    <!-- Summary Tiles -->
+    <div class="row g-3 mb-3">
+      <div class="col-6 col-md-3"><div class="card-panel p-3 text-center"><div class="fw-bold" style="font-size:20px;color:#28c76f;">1,820</div><div style="font-size:12px;color:var(--text-muted);">Completed</div></div></div>
+      <div class="col-6 col-md-3"><div class="card-panel p-3 text-center"><div class="fw-bold" style="font-size:20px;color:#ea5455;">134</div><div style="font-size:12px;color:var(--text-muted);">Cancelled</div></div></div>
+      <div class="col-6 col-md-3"><div class="card-panel p-3 text-center"><div class="fw-bold" style="font-size:20px;color:#00cfe8;">3</div><div style="font-size:12px;color:var(--text-muted);">Live Now</div></div></div>
+      <div class="col-6 col-md-3"><div class="card-panel p-3 text-center"><div class="fw-bold" style="font-size:20px;color:#ff9f43;">10</div><div style="font-size:12px;color:var(--text-muted);">Pending</div></div></div>
+    </div>
+
+    <div class="card-panel">
+      <div class="card-panel-header flex-wrap gap-2">
+        <h6 class="card-panel-title mb-0">All Trips</h6>
+        <div class="d-flex flex-wrap gap-2">
+          <input type="date" class="form-control form-control-sm" style="width:150px;border-radius:8px;" />
+          <select class="form-select form-select-sm" style="width:130px;border-radius:8px;">
+            <option>All Status</option>
+            <option>Completed</option>
+            <option>Cancelled</option>
+            <option>In Progress</option>
+            <option>Pending</option>
+          </select>
+          <button class="btn-brand btn-sm"><i class="fa-solid fa-filter me-1"></i>Filter</button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Trip ID</th>
+              <th>Passenger</th>
+              <th class="hide-mobile">Driver</th>
+              <th>Pickup</th>
+              <th class="hide-mobile">Drop-off</th>
+              <th>Fare</th>
+              <th class="hide-mobile">Payment</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--brand);">#1082</strong></td>
+              <td>James K.</td>
+              <td class="hide-mobile">Peter O.</td>
+              <td style="font-size:12px;">Kampala CBD</td>
+              <td class="hide-mobile" style="font-size:12px;">Entebbe Airport</td>
+              <td><strong>45,000</strong></td>
+              <td class="hide-mobile"><span class="status-pill pill-purple" style="background:rgba(115,103,240,.12);color:#7367f0;">MoMo</span></td>
+              <td><span class="status-pill pill-success">Completed</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--brand);">#1081</strong></td>
+              <td>Sarah M.</td>
+              <td class="hide-mobile">David N.</td>
+              <td style="font-size:12px;">Ntinda</td>
+              <td class="hide-mobile" style="font-size:12px;">CBD</td>
+              <td><strong>18,000</strong></td>
+              <td class="hide-mobile"><span class="status-pill pill-info">Cash</span></td>
+              <td><span class="status-pill pill-info">In Progress</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--brand);">#1080</strong></td>
+              <td>Ruth B.</td>
+              <td class="hide-mobile">Moses K.</td>
+              <td style="font-size:12px;">Kololo</td>
+              <td class="hide-mobile" style="font-size:12px;">Mukono</td>
+              <td><strong>32,000</strong></td>
+              <td class="hide-mobile"><span class="status-pill pill-purple" style="background:rgba(115,103,240,.12);color:#7367f0;">MoMo</span></td>
+              <td><span class="status-pill pill-success">Completed</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--brand);">#1079</strong></td>
+              <td>Tom M.</td>
+              <td class="hide-mobile">Grace A.</td>
+              <td style="font-size:12px;">Mengo</td>
+              <td class="hide-mobile" style="font-size:12px;">Kireka</td>
+              <td><strong>22,000</strong></td>
+              <td class="hide-mobile"><span class="status-pill pill-info">Cash</span></td>
+              <td><span class="status-pill pill-danger">Cancelled</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--brand);">#1078</strong></td>
+              <td>Alice N.</td>
+              <td class="hide-mobile">John S.</td>
+              <td style="font-size:12px;">Muyenga</td>
+              <td class="hide-mobile" style="font-size:12px;">Wandegeya</td>
+              <td><strong>28,000</strong></td>
+              <td class="hide-mobile"><span class="status-pill pill-purple" style="background:rgba(115,103,240,.12);color:#7367f0;">Airtel</span></td>
+              <td><span class="status-pill pill-warning">Pending</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section><!-- /trips -->
+
+
+  <!-- ====================================================
+       PAGE: BUSINESS ACCOUNTS
+       ==================================================== -->
+  <section class="page-section" id="page-business">
+
+    <div class="page-header">
+      <h1>Business Accounts</h1>
+      <p>Review and approve corporate sign-ups for the Matlex Ride Business portal.</p>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon yellow"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="stat-info">
+            <div class="stat-value" id="bizStatPending">0</div>
+            <div class="stat-label">Pending Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info">
+            <div class="stat-value" id="bizStatApproved">0</div>
+            <div class="stat-label">Approved</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+          <div class="stat-info">
+            <div class="stat-value" id="bizStatRejected">0</div>
+            <div class="stat-label">Rejected</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-building"></i></div>
+          <div class="stat-info">
+            <div class="stat-value" id="bizStatTotal">0</div>
+            <div class="stat-label">Total Businesses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-panel mb-3">
+      <div class="card-panel-body py-2">
+        <div class="row g-2 align-items-center">
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="topbar-search w-100">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" class="form-control-sm w-100 ps-5" id="bizSearch" style="padding-left:34px;" placeholder="Search company, email…" />
+            </div>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <select class="form-select form-select-sm" id="bizStatusFilter">
+              <option value="">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <button class="btn-outline-brand w-100" id="bizRefreshBtn"><i class="fa-solid fa-rotate me-1"></i>Refresh</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-panel">
+      <div class="card-panel-header"><h6 class="card-panel-title">All Business Accounts</h6></div>
+      <div class="table-responsive">
+        <table class="data-table" id="businessTable">
+          <thead>
+            <tr><th>Company</th><th class="hide-mobile">Contact</th><th>Wallet</th><th>Status</th><th class="hide-mobile">Registered</th><th>Actions</th></tr>
+          </thead>
+          <tbody><tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </section><!-- /business -->
+
+
+  <!-- ====================================================
+       PAGE: PAYMENTS
+       ==================================================== -->
+  <section class="page-section" id="page-payments">
+
+    <div class="page-header">
+      <h1>Payments</h1>
+      <p>Track all financial transactions and driver payouts.</p>
+    </div>
+
+    <!-- Finance Stats -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-arrow-down"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">UGX 5.6M</div>
+            <div class="stat-label">Revenue This Month</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fa-solid fa-arrow-up"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">UGX 3.9M</div>
+            <div class="stat-label">Driver Payouts</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon yellow"><i class="fa-solid fa-percent"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">UGX 1.7M</div>
+            <div class="stat-label">Platform Earnings</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-clock"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">UGX 420K</div>
+            <div class="stat-label">Pending Payouts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <!-- Payment Method Chart -->
+      <div class="col-12 col-md-5">
+        <div class="card-panel h-100">
+          <div class="card-panel-header"><h6 class="card-panel-title">Payment Methods</h6></div>
+          <div class="card-panel-body">
+            <div class="chart-wrapper" style="height:220px;"><canvas id="paymentsChart"></canvas></div>
+            <div class="row text-center mt-3" style="font-size:12px;">
+              <div class="col-4">
+                <div class="fw-bold" style="color:#7367f0;">65%</div>
+                <div style="color:var(--text-muted);">Mobile Money</div>
+              </div>
+              <div class="col-4">
+                <div class="fw-bold" style="color:#ff9f43;">25%</div>
+                <div style="color:var(--text-muted);">Cash</div>
+              </div>
+              <div class="col-4">
+                <div class="fw-bold" style="color:#00cfe8;">10%</div>
+                <div style="color:var(--text-muted);">Card</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions -->
+      <div class="col-12 col-md-7">
+        <div class="card-panel">
+          <div class="card-panel-header"><h6 class="card-panel-title">Recent Transactions</h6></div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Ref</th>
+                  <th>From</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><small style="color:var(--text-muted);">TXN-9821</small></td>
+                  <td>James K.</td>
+                  <td><strong>45,000</strong></td>
+                  <td><span style="font-size:12px;color:#7367f0;font-weight:600;"><i class="fa-solid fa-mobile me-1"></i>MTN MoMo</span></td>
+                  <td><span class="status-pill pill-success">Received</span></td>
+                </tr>
+                <tr>
+                  <td><small style="color:var(--text-muted);">TXN-9820</small></td>
+                  <td>Ruth B.</td>
+                  <td><strong>32,000</strong></td>
+                  <td><span style="font-size:12px;color:#ff9f43;font-weight:600;"><i class="fa-solid fa-mobile me-1"></i>Airtel</span></td>
+                  <td><span class="status-pill pill-success">Received</span></td>
+                </tr>
+                <tr>
+                  <td><small style="color:var(--text-muted);">TXN-9819</small></td>
+                  <td>Alice N.</td>
+                  <td><strong>28,000</strong></td>
+                  <td><span style="font-size:12px;color:#8a93a2;font-weight:600;"><i class="fa-solid fa-money-bill me-1"></i>Cash</span></td>
+                  <td><span class="status-pill pill-warning">Pending</span></td>
+                </tr>
+                <tr>
+                  <td><small style="color:var(--text-muted);">PAY-1121</small></td>
+                  <td>→ Peter O. (Driver)</td>
+                  <td><strong>81,000</strong></td>
+                  <td><span style="font-size:12px;color:#7367f0;font-weight:600;"><i class="fa-solid fa-mobile me-1"></i>MTN MoMo</span></td>
+                  <td><span class="status-pill pill-success">Paid Out</span></td>
+                </tr>
+                <tr>
+                  <td><small style="color:var(--text-muted);">PAY-1120</small></td>
+                  <td>→ Moses K. (Driver)</td>
+                  <td><strong>104,000</strong></td>
+                  <td><span style="font-size:12px;color:#ff9f43;font-weight:600;"><i class="fa-solid fa-mobile me-1"></i>Airtel</span></td>
+                  <td><span class="status-pill pill-success">Paid Out</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /payments -->
+
+
+  <!-- ====================================================
+       PAGE: REPORTS
+       ==================================================== -->
+  <section class="page-section" id="page-reports">
+
+    <div class="page-header">
+      <h1>Reports</h1>
+      <p>Analytics and performance summaries for Matlex Ride.</p>
+    </div>
+
+    <!-- Quick KPI row -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="card-panel p-3 text-center">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Avg Trip Value</div>
+          <div class="fw-bold" style="font-size:22px;color:#1e2a3a;">UGX 25,800</div>
+          <div class="stat-change up" style="font-size:11px;justify-content:center;display:flex;gap:4px;"><i class="fa-solid fa-arrow-up"></i> 5.2% MoM</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card-panel p-3 text-center">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Avg Driver Rating</div>
+          <div class="fw-bold" style="font-size:22px;color:#1e2a3a;">4.7 <span style="font-size:16px;color:#F7B731;">★</span></div>
+          <div class="stat-change up" style="font-size:11px;justify-content:center;display:flex;gap:4px;"><i class="fa-solid fa-arrow-up"></i> 0.1 pts</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card-panel p-3 text-center">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Completion Rate</div>
+          <div class="fw-bold" style="font-size:22px;color:#1e2a3a;">93.1%</div>
+          <div class="stat-change up" style="font-size:11px;justify-content:center;display:flex;gap:4px;"><i class="fa-solid fa-arrow-up"></i> 1.4% MoM</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card-panel p-3 text-center">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">New Users (month)</div>
+          <div class="fw-bold" style="font-size:22px;color:#1e2a3a;">318</div>
+          <div class="stat-change up" style="font-size:11px;justify-content:center;display:flex;gap:4px;"><i class="fa-solid fa-arrow-up"></i> 22% MoM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top drivers performance -->
+    <div class="card-panel mb-3">
+      <div class="card-panel-header">
+        <h6 class="card-panel-title">Top Performing Drivers — June 2026</h6>
+        <button class="btn-brand btn-sm"><i class="fa-solid fa-download me-1"></i>Download PDF</button>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Driver</th>
+              <th>Trips</th>
+              <th>Revenue</th>
+              <th>Rating</th>
+              <th>Completion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span style="background:rgba(247,183,49,.2);color:#d4991e;font-weight:700;padding:2px 8px;border-radius:20px;font-size:12px;">🥇 1</span></td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#ff9f43;color:#fff;">RM</div>Richard M.</div></td>
+              <td><strong>310</strong></td>
+              <td>UGX 2.6M</td>
+              <td><span class="star-rating">★★★★★</span> 5.0</td>
+              <td>
+                <div style="font-size:12px;color:#28c76f;font-weight:600;">98%</div>
+                <div class="mini-progress"><div class="mini-progress-bar" style="width:98%;background:#28c76f;"></div></div>
+              </td>
+            </tr>
+            <tr>
+              <td><span style="background:rgba(138,147,162,.15);color:#8a93a2;font-weight:700;padding:2px 8px;border-radius:20px;font-size:12px;">🥈 2</span></td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#28c76f;color:#fff;">MK</div>Moses K.</div></td>
+              <td><strong>215</strong></td>
+              <td>UGX 1.8M</td>
+              <td><span class="star-rating">★★★★★</span> 4.8</td>
+              <td>
+                <div style="font-size:12px;color:#28c76f;font-weight:600;">95%</div>
+                <div class="mini-progress"><div class="mini-progress-bar" style="width:95%;background:#28c76f;"></div></div>
+              </td>
+            </tr>
+            <tr>
+              <td><span style="background:rgba(247,183,49,.08);color:#d4991e;font-weight:700;padding:2px 8px;border-radius:20px;font-size:12px;">🥉 3</span></td>
+              <td><div class="user-cell"><div class="user-avatar" style="width:28px;height:28px;font-size:11px;background:#7367f0;color:#fff;">PO</div>Peter O.</div></td>
+              <td><strong>142</strong></td>
+              <td>UGX 1.2M</td>
+              <td><span class="star-rating">★★★★★</span> 4.9</td>
+              <td>
+                <div style="font-size:12px;color:#28c76f;font-weight:600;">94%</div>
+                <div class="mini-progress"><div class="mini-progress-bar" style="width:94%;background:#28c76f;"></div></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section><!-- /reports -->
+
+
+  <!-- ====================================================
+       PAGE: SETTINGS
+       ==================================================== -->
+  <section class="page-section" id="page-settings">
+
+    <div class="page-header">
+      <h1>Settings</h1>
+      <p>Configure platform preferences for Matlex Ride.</p>
+    </div>
+
+    <div class="row g-3">
+
+      <!-- General Settings -->
+      <div class="col-12 col-lg-6">
+        <div class="card-panel mb-3">
+          <div class="card-panel-header"><h6 class="card-panel-title"><i class="fa-solid fa-sliders me-2" style="color:var(--brand);"></i>General</h6></div>
+          <div class="card-panel-body">
+            <div class="mb-3">
+              <label class="form-label-sm">Business Name</label>
+              <input type="text" class="form-control form-control-sm" value="Matlex Ride" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">Support Email</label>
+              <input type="email" class="form-control form-control-sm" value="support@matlexride.ug" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">Support Phone</label>
+              <input type="tel" class="form-control form-control-sm" value="+256 700 000 000" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">Currency</label>
+              <select class="form-select form-select-sm" style="border-radius:8px;">
+                <option selected>UGX — Ugandan Shilling</option>
+                <option>USD — US Dollar</option>
+                <option>KES — Kenyan Shilling</option>
+              </select>
+            </div>
+            <button class="btn-brand btn-sm">Save Changes</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fare Settings -->
+      <div class="col-12 col-lg-6">
+        <div class="card-panel mb-3">
+          <div class="card-panel-header"><h6 class="card-panel-title"><i class="fa-solid fa-calculator me-2" style="color:var(--brand);"></i>Fare Settings</h6></div>
+          <div class="card-panel-body">
+            <div class="mb-3">
+              <label class="form-label-sm">Base Fare (UGX)</label>
+              <input type="number" class="form-control form-control-sm" value="3000" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">Per KM Rate (UGX)</label>
+              <input type="number" class="form-control form-control-sm" value="1500" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">Platform Commission (%)</label>
+              <input type="number" class="form-control form-control-sm" value="20" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">Cancellation Fee (UGX)</label>
+              <input type="number" class="form-control form-control-sm" value="2000" style="border-radius:8px;" />
+            </div>
+            <button class="btn-brand btn-sm">Update Fare</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="col-12 col-lg-6">
+        <div class="card-panel">
+          <div class="card-panel-header"><h6 class="card-panel-title"><i class="fa-solid fa-bell me-2" style="color:var(--brand);"></i>Notifications</h6></div>
+          <div class="card-panel-body">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-3" style="border-bottom:1px solid #f0f2f5;">
+              <div>
+                <div style="font-size:13px;font-weight:600;">New Trip Alerts</div>
+                <div style="font-size:12px;color:var(--text-muted);">Get notified on every new booking</div>
+              </div>
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input" type="checkbox" checked style="cursor:pointer;" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-3" style="border-bottom:1px solid #f0f2f5;">
+              <div>
+                <div style="font-size:13px;font-weight:600;">Driver Registration</div>
+                <div style="font-size:12px;color:var(--text-muted);">Alert when a new driver registers</div>
+              </div>
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input" type="checkbox" checked style="cursor:pointer;" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-3" style="border-bottom:1px solid #f0f2f5;">
+              <div>
+                <div style="font-size:13px;font-weight:600;">Payment Received</div>
+                <div style="font-size:12px;color:var(--text-muted);">Email notification per payment</div>
+              </div>
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input" type="checkbox" checked style="cursor:pointer;" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div style="font-size:13px;font-weight:600;">Weekly Report</div>
+                <div style="font-size:12px;color:var(--text-muted);">Auto-generate weekly summary email</div>
+              </div>
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input" type="checkbox" style="cursor:pointer;" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Account -->
+      <div class="col-12 col-lg-6">
+        <div class="card-panel">
+          <div class="card-panel-header"><h6 class="card-panel-title"><i class="fa-solid fa-user-shield me-2" style="color:var(--brand);"></i>Admin Account</h6></div>
+          <div class="card-panel-body">
+            <div class="mb-3">
+              <label class="form-label-sm">Full Name</label>
+              <input type="text" class="form-control form-control-sm" value="Alex Namurinda" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">Email</label>
+              <input type="email" class="form-control form-control-sm" value="namurindaalex43@gmail.com" style="border-radius:8px;" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label-sm">New Password</label>
+              <input type="password" class="form-control form-control-sm" placeholder="Leave blank to keep current" style="border-radius:8px;" />
+            </div>
+            <button class="btn-brand btn-sm">Update Account</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- /settings -->
+
+
+</div><!-- /page-content -->
+</main>
+
+
+<!-- ======================================================
+     MOBILE BOTTOM NAV
+     ====================================================== -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+  <div class="mobile-nav-item" data-page="dashboard">
+    <i class="fa-solid fa-gauge-high"></i>
+    <span>Dashboard</span>
+  </div>
+  <div class="mobile-nav-item" data-page="drivers">
+    <i class="fa-solid fa-id-card"></i>
+    <span>Drivers</span>
+  </div>
+  <div class="mobile-nav-item" data-page="trips">
+    <i class="fa-solid fa-route"></i>
+    <span>Trips</span>
+  </div>
+  <div class="mobile-nav-item" data-page="payments">
+    <i class="fa-solid fa-wallet"></i>
+    <span>Payments</span>
+  </div>
+  <div class="mobile-nav-item" data-page="settings">
+    <i class="fa-solid fa-gear"></i>
+    <span>Settings</span>
+  </div>
+</nav>
+
+
+<!-- ======================================================
+     MODAL: Add Driver
+     ====================================================== -->
+<div class="modal fade" id="addDriverModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;border:none;">
+      <div class="modal-header" style="border-bottom:1px solid #f0f2f5;padding:16px 20px;">
+        <h6 class="modal-title fw-bold">Add New Driver</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" style="padding:20px;">
+        <div class="row g-3">
+          <div class="col-6">
+            <label class="form-label-sm">First Name</label>
+            <input type="text" class="form-control form-control-sm" placeholder="John" style="border-radius:8px;" />
+          </div>
+          <div class="col-6">
+            <label class="form-label-sm">Last Name</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Doe" style="border-radius:8px;" />
+          </div>
+          <div class="col-12">
+            <label class="form-label-sm">Phone Number</label>
+            <input type="tel" class="form-control form-control-sm" placeholder="+256 7XX XXX XXX" style="border-radius:8px;" />
+          </div>
+          <div class="col-12">
+            <label class="form-label-sm">National ID / Licence No.</label>
+            <input type="text" class="form-control form-control-sm" style="border-radius:8px;" />
+          </div>
+          <div class="col-6">
+            <label class="form-label-sm">Vehicle Plate</label>
+            <input type="text" class="form-control form-control-sm" placeholder="UBG 000X" style="border-radius:8px;" />
+          </div>
+          <div class="col-6">
+            <label class="form-label-sm">Vehicle Type</label>
+            <select class="form-select form-select-sm" style="border-radius:8px;">
+              <option>Saloon</option>
+              <option>SUV</option>
+              <option>Boda Boda</option>
+              <option>Mini Van</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label class="form-label-sm">Mobile Money Number</label>
+            <input type="tel" class="form-control form-control-sm" placeholder="+256 7XX XXX XXX" style="border-radius:8px;" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid #f0f2f5;padding:14px 20px;gap:10px;">
+        <button type="button" class="btn-outline-brand" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn-brand">Register Driver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================================
+     BUSINESS TOP-UP MODAL
+     ====================================================== -->
+<div class="modal fade" id="bizTopupModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;border:none;">
+      <div class="modal-header" style="border-bottom:1px solid #f0f2f5;padding:16px 20px;">
+        <div>
+          <h6 class="modal-title fw-bold mb-0"><i class="fa-solid fa-wallet me-2" style="color:var(--brand);"></i>Top Up Wallet</h6>
+          <div style="font-size:.8rem;color:var(--text-muted);margin-top:2px;" id="bizTopupSubject">Company name</div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form id="bizTopupForm">
+        <input type="hidden" id="bizTopupId">
+        <div class="modal-body" style="padding:20px;display:flex;flex-direction:column;gap:14px;">
+          <p style="font-size:.82rem;color:var(--text-muted);margin:0;">Confirm you've received payment from this business before crediting their wallet.</p>
+          <div>
+            <label class="form-label-sm">Amount (UGX)</label>
+            <input type="number" class="form-control form-control-sm" id="bizTopupAmount" placeholder="e.g. 500000" min="1000" step="1000" style="border-radius:8px;" required>
+          </div>
+          <div>
+            <label class="form-label-sm">Reason / Payment Reference (optional)</label>
+            <input type="text" class="form-control form-control-sm" id="bizTopupReason" placeholder="e.g. MoMo ref 88213" style="border-radius:8px;">
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top:1px solid #f0f2f5;padding:14px 20px;gap:10px;">
+          <button type="button" class="btn-outline-brand" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-brand"><i class="fa-solid fa-check me-2"></i>Confirm Top Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     BUSINESS TRANSACTIONS MODAL
+     ====================================================== -->
+<div class="modal fade" id="bizTxnModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="border-radius:16px;border:none;">
+      <div class="modal-header" style="border-bottom:1px solid #f0f2f5;padding:16px 20px;">
+        <div>
+          <h6 class="modal-title fw-bold mb-0"><i class="fa-solid fa-receipt me-2" style="color:var(--brand);"></i>Transactions</h6>
+          <div style="font-size:.8rem;color:var(--text-muted);margin-top:2px;" id="bizTxnSubject">Company name</div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" style="padding:0;max-height:60vh;overflow-y:auto;">
+        <div class="table-responsive">
+          <table class="data-table" id="bizTxnTable">
+            <thead>
+              <tr><th>Type</th><th class="hide-mobile">Staff</th><th class="hide-mobile">Date</th><th>Amount</th><th>Reason</th><th>Actions</th></tr>
+            </thead>
+            <tbody><tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid #f0f2f5;padding:14px 20px;">
+        <button type="button" class="btn-outline-brand" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div id="toastHost" style="position:fixed;bottom:24px;right:24px;z-index:2000;display:flex;flex-direction:column;gap:10px;"></div>
+
+<!-- ======================================================
+     SCRIPTS
+     ====================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="assets/js/admin.js?v=4"></script>
+
+</body>
+</html>

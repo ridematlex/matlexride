@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Matlex Ride — Business Portal</title>
+  <link rel="icon" href="../assets/images/Logo1.png" type="image/png">
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Business Portal CSS -->
+  <link rel="stylesheet" href="assets/css/business.css?v=2" />
+</head>
+<body>
+
+<!-- ======================================================
+     ACCESS GATE (shown when no session / pending / rejected)
+     ====================================================== -->
+<div class="gate-screen" id="gateScreen">
+  <div class="gate-card" id="gateCard"><!-- populated by JS --></div>
+</div>
+
+<!-- ======================================================
+     APP SHELL (hidden until an approved session exists)
+     ====================================================== -->
+<div id="appShell" style="display:none;">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ==================================================
+       SIDEBAR
+       ================================================== -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+      <img src="../assets/images/Logo1.png" alt="Matlex Ride" class="brand-icon-img">
+      <div class="brand-text">
+        <div class="brand-name">Matlex Ride</div>
+        <div class="brand-sub">Business Portal</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <div class="sidebar-section-title">Overview</div>
+      <div class="nav-item">
+        <div class="nav-link-item" data-page="dashboard">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Dashboard</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section-title">Management</div>
+      <div class="nav-item">
+        <div class="nav-link-item" data-page="staff">
+          <i class="fa-solid fa-users"></i>
+          <span>Staff List</span>
+          <span class="nav-badge" id="navStaffBadge">0</span>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-link-item" data-page="rides">
+          <i class="fa-solid fa-route"></i>
+          <span>Ride History</span>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-link-item" data-page="transactions">
+          <i class="fa-solid fa-money-bill-transfer"></i>
+          <span>Transactions</span>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-link-item" data-page="scheduled">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Scheduled Trips</span>
+          <span class="nav-badge" id="navScheduledBadge">0</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section-title">Insights</div>
+      <div class="nav-item">
+        <div class="nav-link-item" data-page="reports">
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Reports</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section-title">Account</div>
+      <div class="nav-item">
+        <div class="nav-link-item" data-page="settings">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-link-item nav-logout" id="logoutBtn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </div>
+      </div>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-company">
+        <div class="company-avatar" id="sidebarCompanyAvatar">M</div>
+        <div class="company-info">
+          <div class="company-name" id="sidebarCompanyName">Your Business</div>
+          <div class="company-plan">Business Account</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ==================================================
+       TOPBAR
+       ================================================== -->
+  <header class="topbar">
+    <button class="btn-sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="topbar-breadcrumb">
+      Business Portal / <span id="pageTitle">Dashboard</span>
+    </div>
+
+    <div class="topbar-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" placeholder="Search staff, trips…" />
+    </div>
+
+    <div class="topbar-actions">
+      <button class="topbar-icon-btn" title="Notifications">
+        <i class="fa-solid fa-bell"></i>
+        <span class="badge-dot"></span>
+      </button>
+      <div class="topbar-avatar" id="topbarAvatar" title="Account">M</div>
+    </div>
+  </header>
+
+  <!-- ==================================================
+       MAIN CONTENT
+       ================================================== -->
+  <main class="main-content">
+  <div class="page-content">
+
+    <!-- ============================================
+         PAGE: DASHBOARD
+         ============================================ -->
+    <section class="page-section" id="page-dashboard">
+
+      <div class="page-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Here's how your business is moving with Matlex Ride this month.</p>
+        </div>
+      </div>
+
+      <!-- Business Profile Card -->
+      <div class="profile-row">
+        <div class="profile-card">
+          <div class="profile-card-id">
+            <div class="profile-avatar" id="profileAvatar">M</div>
+            <div>
+              <div class="profile-name" id="profileCompanyName">Your Business</div>
+              <div class="profile-line">Wallet Balance <strong>UGX <span id="statWallet">0</span></strong></div>
+              <div class="profile-line">Total Rides This Month <strong id="statRides">0</strong> &nbsp;·&nbsp; Active Staff <strong id="statStaff">0</strong></div>
+            </div>
+          </div>
+          <div class="profile-edit-btn" title="Edit company profile" data-page-link="settings"><i class="fa-solid fa-pen"></i></div>
+        </div>
+        <div class="profile-actions">
+          <div class="pill-btn pill-btn-outline" data-page-link="staff"><i class="fa-solid fa-user-plus"></i> Add Staff</div>
+          <div class="pill-btn pill-btn-outline" data-page-link="scheduled"><i class="fa-solid fa-calendar-plus"></i> Schedule Trip</div>
+        </div>
+      </div>
+
+      <!-- Secondary stats -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3">
+          <div class="stat-card">
+            <div class="stat-icon pink"><i class="fa-solid fa-car"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="statTotalRides">0</div>
+              <div class="stat-label">Total Rides Booked</div>
+              <div class="stat-change" style="color:var(--text-muted);">No rides yet</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-sack-dollar"></i></div>
+            <div class="stat-info">
+              <div class="stat-value">UGX <span id="statSpendMonth">0</span></div>
+              <div class="stat-label">Spend This Month</div>
+              <div class="stat-change" style="color:var(--text-muted);">No spend yet</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="statScheduledCount">0</div>
+              <div class="stat-label">Scheduled Trips</div>
+              <div class="stat-change" style="color:var(--text-muted);">Nothing upcoming</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card">
+            <div class="stat-icon purple"><i class="fa-solid fa-star"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="statAvgRating">—</div>
+              <div class="stat-label">Avg. Driver Rating</div>
+              <div class="stat-change" style="color:var(--text-muted);">Across all rides</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spend trend chart -->
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-lg-8">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <h6 class="card-panel-title">Monthly Spend Trend</h6>
+              <span class="card-panel-link" data-page-link="reports">View reports</span>
+            </div>
+            <div class="card-panel-body">
+              <div class="chart-wrapper empty-state" style="height:220px;" id="spendTrendEmpty">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>No spend data yet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="card-panel h-100">
+            <div class="card-panel-header">
+              <h6 class="card-panel-title">Ride Status</h6>
+            </div>
+            <div class="card-panel-body">
+              <div class="chart-wrapper empty-state" style="height:220px;" id="rideStatusEmpty">
+                <i class="fa-solid fa-route"></i>
+                <span>No rides yet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent activity -->
+      <div class="row g-3">
+        <div class="col-12 col-lg-7">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <h6 class="card-panel-title">Recent Rides</h6>
+              <span class="card-panel-link" data-page-link="rides">View all</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="dashRidesTable">
+                <thead><tr><th>Staff</th><th>Route</th><th class="hide-mobile">Date</th><th>Fare</th><th>Status</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <h6 class="card-panel-title">Recent Transactions</h6>
+              <span class="card-panel-link" data-page-link="transactions">View all</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="dashTxnTable">
+                <thead><tr><th>Type</th><th>Date</th><th>Amount</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================
+         PAGE: STAFF LIST
+         ============================================ -->
+    <section class="page-section" id="page-staff">
+
+      <div class="page-header">
+        <div>
+          <h1>Staff List</h1>
+          <p>Manage who can book rides under your business account.</p>
+        </div>
+        <button class="btn-brand" id="inviteStaffBtn"><i class="fa-solid fa-user-plus me-2"></i>Add Staff</button>
+      </div>
+
+      <div class="staff-workspace">
+
+        <div class="staff-list-panel card-panel">
+          <div class="staff-list-search">
+            <input type="search" class="form-control form-control-sm" placeholder="Search staff…" id="staffSearch">
+          </div>
+          <div class="staff-list-scroll" id="staffListScroll">
+            <div class="table-empty-row" style="display:block;"><i class="fa-solid fa-users"></i>No staff added yet.</div>
+          </div>
+        </div>
+
+        <div class="staff-detail-panel card-panel" id="staffDetailPanel">
+          <div class="staff-detail-empty">
+            <i class="fa-solid fa-user-group"></i>
+            <p>Select a staff member from the list to view their details, trips, and transactions.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================
+         PAGE: RIDE HISTORY
+         ============================================ -->
+    <section class="page-section" id="page-rides">
+
+      <div class="page-header">
+        <div>
+          <h1>Ride History</h1>
+          <p>All trips booked by your staff across Matlex Ride.</p>
+        </div>
+        <button class="btn-outline-brand"><i class="fa-solid fa-arrow-down-to-line me-2"></i>Export CSV</button>
+      </div>
+
+      <div class="card-panel mb-3">
+        <div class="card-panel-body" style="padding:16px 20px;">
+          <div class="row g-2 align-items-end">
+            <div class="col-6 col-md-3">
+              <label class="form-label-sm">From</label>
+              <input type="date" class="form-control form-control-sm">
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label-sm">To</label>
+              <input type="date" class="form-control form-control-sm">
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label-sm">Staff Member</label>
+              <select class="form-select form-select-sm"><option>All staff</option></select>
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label-sm">Status</label>
+              <select class="form-select form-select-sm"><option>All statuses</option><option>Completed</option><option>Cancelled</option></select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-panel">
+        <div class="table-responsive">
+          <table class="data-table" id="ridesTable">
+            <thead>
+              <tr><th>Trip ID</th><th>Staff</th><th>Route</th><th class="hide-mobile">Date</th><th>Fare</th><th>Status</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================
+         PAGE: TRANSACTIONS
+         ============================================ -->
+    <section class="page-section" id="page-transactions">
+
+      <div class="page-header">
+        <div>
+          <h1>Transactions</h1>
+          <p>Wallet top-ups, ride payments, and refunds for your account.</p>
+        </div>
+        <button class="btn-outline-brand" id="txnExportBtn"><i class="fa-solid fa-arrow-down-to-line me-2"></i>Export CSV</button>
+      </div>
+
+      <div class="card-panel mb-3">
+        <div class="card-panel-body" style="padding:16px 20px;">
+          <div class="row g-2 align-items-end">
+            <div class="col-6 col-md-3">
+              <label class="form-label-sm">From</label>
+              <input type="date" class="form-control form-control-sm" id="txnFromDate">
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label-sm">To</label>
+              <input type="date" class="form-control form-control-sm" id="txnToDate">
+            </div>
+            <div class="col-6 col-md-3">
+              <button class="btn-outline-brand w-100" id="txnClearFilterBtn">Clear Filter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-4">
+          <div class="stat-card">
+            <div class="stat-icon pink"><i class="fa-solid fa-wallet"></i></div>
+            <div class="stat-info">
+              <div class="stat-value">UGX <span id="txnWalletBalance">0</span></div>
+              <div class="stat-label">Current Wallet Balance</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="stat-info">
+              <div class="stat-value">UGX <span id="statToppedUp">0</span></div>
+              <div class="stat-label">Total Topped Up</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="stat-card">
+            <div class="stat-icon orange"><i class="fa-solid fa-arrow-up"></i></div>
+            <div class="stat-info">
+              <div class="stat-value">UGX <span id="statTotalSpent">0</span></div>
+              <div class="stat-label">Total Spent</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-panel">
+        <div class="card-panel-header"><h6 class="card-panel-title">All Transactions</h6></div>
+        <div class="table-responsive">
+          <table class="data-table" id="txnTable">
+            <thead>
+              <tr><th>Transaction ID</th><th>Type</th><th class="hide-mobile">Date</th><th>Amount</th><th>Status</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================
+         PAGE: SCHEDULED TRIPS
+         ============================================ -->
+    <section class="page-section" id="page-scheduled">
+
+      <div class="page-header">
+        <div>
+          <h1>Scheduled Trips</h1>
+          <p>Plan staff trips ahead of time and track upcoming bookings.</p>
+        </div>
+        <button class="btn-brand" id="scheduleTripBtn"><i class="fa-solid fa-calendar-plus me-2"></i>Schedule a Trip</button>
+      </div>
+
+      <div class="card-panel">
+        <div class="table-responsive">
+          <table class="data-table" id="scheduledTable">
+            <thead>
+              <tr><th>Staff</th><th>Pickup</th><th>Destination</th><th class="hide-mobile">Date &amp; Time</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================
+         PAGE: REPORTS
+         ============================================ -->
+    <section class="page-section" id="page-reports">
+
+      <div class="page-header">
+        <div>
+          <h1>Reports</h1>
+          <p>Download summaries of your business activity on Matlex Ride.</p>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-lg-4">
+          <div class="report-card">
+            <div class="report-card-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            <h4>Monthly Spend Report</h4>
+            <p>A full breakdown of company spend on rides, grouped by staff member and department.</p>
+            <div class="report-card-actions">
+              <button class="btn-brand"><i class="fa-solid fa-file-pdf me-2"></i>PDF</button>
+              <button class="btn-outline-brand"><i class="fa-solid fa-file-csv me-2"></i>CSV</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="report-card">
+            <div class="report-card-icon"><i class="fa-solid fa-users"></i></div>
+            <h4>Staff Usage Report</h4>
+            <p>See which staff members are riding most often and identify under-used budgets.</p>
+            <div class="report-card-actions">
+              <button class="btn-brand"><i class="fa-solid fa-file-pdf me-2"></i>PDF</button>
+              <button class="btn-outline-brand"><i class="fa-solid fa-file-csv me-2"></i>CSV</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="report-card">
+            <div class="report-card-icon"><i class="fa-solid fa-route"></i></div>
+            <h4>Trip Summary Report</h4>
+            <p>Trip counts, completion rates, and average fares across the selected period.</p>
+            <div class="report-card-actions">
+              <button class="btn-brand"><i class="fa-solid fa-file-pdf me-2"></i>PDF</button>
+              <button class="btn-outline-brand"><i class="fa-solid fa-file-csv me-2"></i>CSV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-panel">
+        <div class="card-panel-header"><h6 class="card-panel-title">Spend by Department</h6></div>
+        <div class="card-panel-body">
+          <div class="chart-wrapper empty-state" style="height:260px;">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>No spend data yet — this chart fills in once your staff start riding.</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================
+         PAGE: SETTINGS
+         ============================================ -->
+    <section class="page-section" id="page-settings">
+
+      <div class="page-header">
+        <div>
+          <h1>Settings</h1>
+          <p>Manage your company profile and notification preferences.</p>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-7">
+          <div class="card-panel">
+            <div class="card-panel-header"><h6 class="card-panel-title">Company Profile</h6></div>
+            <div class="card-panel-body">
+              <form id="settingsForm">
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label class="form-label-sm">Company Name</label>
+                    <input type="text" class="form-control form-control-sm" id="settingsCompanyName">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label-sm">Work Email</label>
+                    <input type="email" class="form-control form-control-sm" id="settingsEmail" readonly>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label-sm">Phone Number</label>
+                    <input type="text" class="form-control form-control-sm" id="settingsPhone" placeholder="+256 7XX XXX XXX">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label-sm">TIN / Registration No.</label>
+                    <input type="text" class="form-control form-control-sm" id="settingsTin" placeholder="Optional">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label-sm">Office Address</label>
+                    <input type="text" class="form-control form-control-sm" id="settingsAddress" placeholder="Plot, Street, City">
+                  </div>
+                </div>
+                <button type="submit" class="btn-brand mt-4"><i class="fa-solid fa-check me-2"></i>Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div class="card-panel">
+            <div class="card-panel-header"><h6 class="card-panel-title">Notifications</h6></div>
+            <div class="card-panel-body" style="padding-top:4px;padding-bottom:4px;">
+              <div class="toggle-row">
+                <div class="toggle-row-text"><strong>Email Alerts</strong><span>Ride and transaction summaries</span></div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-text"><strong>SMS Alerts</strong><span>Critical account notifications</span></div>
+                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-text"><strong>Weekly Report Email</strong><span>Auto-sent every Monday</span></div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  </main>
+
+  <!-- ==================================================
+       MOBILE BOTTOM NAV
+       ================================================== -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav">
+    <div class="mobile-nav-item" data-page="dashboard"><i class="fa-solid fa-gauge-high"></i><span>Home</span></div>
+    <div class="mobile-nav-item" data-page="staff"><i class="fa-solid fa-users"></i><span>Staff</span></div>
+    <div class="mobile-nav-item" data-page="rides"><i class="fa-solid fa-route"></i><span>Rides</span></div>
+    <div class="mobile-nav-item" data-page="transactions"><i class="fa-solid fa-money-bill-transfer"></i><span>Wallet</span></div>
+    <div class="mobile-nav-item" data-page="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></div>
+  </nav>
+
+</div>
+
+<!-- ======================================================
+     STAFF PAYOUT MODAL
+     ====================================================== -->
+<div class="modal fade" id="payoutModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:18px;border:none;">
+      <div class="modal-header" style="border-bottom:none;padding-bottom:0;">
+        <div class="w-100 text-center">
+          <h5 class="modal-title" style="font-size:1.1rem;font-weight:800;color:var(--text-strong);">Top-Up</h5>
+          <div style="font-size:.82rem;color:var(--text-muted);margin-top:2px;" id="payoutSubject">Staff name · phone</div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="position:absolute;right:16px;top:16px;"></button>
+      </div>
+      <div class="modal-body" style="display:flex;flex-direction:column;gap:18px;">
+
+        <div class="payout-banner" id="payoutBanner">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>You're about to <strong id="payoutBannerVerb">debit</strong> money from <strong id="payoutBannerName">this staff member's</strong> business wallet.</span>
+        </div>
+
+        <div>
+          <label class="form-label-sm">Transfer Type</label>
+          <div class="radio-pill-group">
+            <label class="radio-pill checked"><input type="radio" name="payoutType" value="debit" checked> Debit</label>
+            <label class="radio-pill"><input type="radio" name="payoutType" value="credit"> Credit</label>
+          </div>
+        </div>
+
+        <div class="reason-dropdown" id="reasonDropdown">
+          <label class="form-label-sm">Reason</label>
+          <div class="form-control form-control-sm reason-dropdown-input" id="reasonDropdownInput">
+            <span id="reasonDropdownText" style="color:rgba(15,23,42,.4);">Select or type reason</span>
+            <i class="fa-solid fa-chevron-down" style="font-size:11px;color:var(--text-muted);"></i>
+          </div>
+          <div class="reason-dropdown-panel" id="reasonDropdownPanel">
+            <div class="reason-add-custom" id="reasonAddCustom">Add Custom Reason <i class="fa-solid fa-plus"></i></div>
+            <div class="reason-list-label">Or Select From the list</div>
+            <div id="reasonOptionsList"></div>
+          </div>
+        </div>
+
+        <div>
+          <label class="form-label-sm">Amount</label>
+          <div style="position:relative;">
+            <input type="number" class="form-control form-control-sm" id="payoutAmount" placeholder="5,000" min="1000" step="1000" style="padding-right:54px;">
+            <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:.78rem;font-weight:700;color:var(--text-muted);">UGX</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer" style="border-top:none;justify-content:center;gap:14px;padding-bottom:8px;">
+        <button type="button" class="btn-outline-brand" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn-brand" id="confirmPayoutBtn" style="padding:10px 32px;">Top-Up</button>
+      </div>
+      <p style="text-align:center;font-size:.74rem;color:var(--text-muted);padding:0 20px 18px;margin:0;">
+        Call support at any time you feel lost<br>Kampala: <span style="color:var(--brand);font-weight:600;">0709 508 211</span> &nbsp;·&nbsp; Email: <span style="color:var(--brand);font-weight:600;">info@matlexride.ug</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     INVITE STAFF MODAL
+     ====================================================== -->
+<div class="modal fade" id="inviteStaffModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;border:none;">
+      <div class="modal-header" style="border-bottom:1px solid #f1eef7;">
+        <h5 class="modal-title" style="font-size:1rem;font-weight:700;color:var(--text-strong);"><i class="fa-solid fa-user-plus me-2" style="color:var(--brand);"></i>Add Staff Member</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="inviteStaffForm">
+        <div class="modal-body" style="display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <label class="form-label-sm">Full Name</label>
+            <input type="text" class="form-control form-control-sm" id="inviteStaffName" placeholder="e.g. Jane Doe" required>
+          </div>
+          <div>
+            <label class="form-label-sm">Phone Number</label>
+            <input type="text" class="form-control form-control-sm" id="inviteStaffPhone" placeholder="e.g. 0700 123 456" required>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top:1px solid #f1eef7;">
+          <button type="button" class="btn-outline-brand" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-brand"><i class="fa-solid fa-user-plus me-2"></i>Add Staff Member</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     EDIT STAFF MODAL
+     ====================================================== -->
+<div class="modal fade" id="editStaffModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;border:none;">
+      <div class="modal-header" style="border-bottom:1px solid #f1eef7;">
+        <h5 class="modal-title" style="font-size:1rem;font-weight:700;color:var(--text-strong);"><i class="fa-solid fa-pen me-2" style="color:var(--brand);"></i>Edit Staff Member</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="editStaffForm">
+        <input type="hidden" id="editStaffId">
+        <div class="modal-body" style="display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <label class="form-label-sm">Full Name</label>
+            <input type="text" class="form-control form-control-sm" id="editStaffName" required>
+          </div>
+          <div>
+            <label class="form-label-sm">Phone Number</label>
+            <input type="text" class="form-control form-control-sm" id="editStaffPhone" required>
+          </div>
+          <div>
+            <label class="form-label-sm">Department (optional)</label>
+            <input type="text" class="form-control form-control-sm" id="editStaffDept">
+          </div>
+          <div>
+            <label class="form-label-sm">Status</label>
+            <select class="form-select form-select-sm" id="editStaffStatus">
+              <option value="active">Active</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top:1px solid #f1eef7;">
+          <button type="button" class="btn-outline-brand" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-brand"><i class="fa-solid fa-check me-2"></i>Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     SCHEDULE TRIP MODAL
+     ====================================================== -->
+<div class="modal fade" id="scheduleTripModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;border:none;">
+      <div class="modal-header" style="border-bottom:1px solid #f1eef7;">
+        <h5 class="modal-title" style="font-size:1rem;font-weight:700;color:var(--text-strong);"><i class="fa-solid fa-calendar-plus me-2" style="color:var(--brand);"></i>Schedule a Trip</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="scheduleTripForm">
+        <div class="modal-body" style="display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <label class="form-label-sm">Staff Member (optional)</label>
+            <select class="form-select form-select-sm" id="scheduleStaffSelect">
+              <option value="">No specific staff member</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label-sm">Pickup Address</label>
+            <input type="text" class="form-control form-control-sm" id="schedulePickup" placeholder="e.g. Kampala Road" required>
+          </div>
+          <div>
+            <label class="form-label-sm">Drop-off Address</label>
+            <input type="text" class="form-control form-control-sm" id="scheduleDropoff" placeholder="e.g. Entebbe Airport" required>
+          </div>
+          <div class="row g-2">
+            <div class="col-7">
+              <label class="form-label-sm">Date &amp; Time</label>
+              <input type="datetime-local" class="form-control form-control-sm" id="scheduleWhen" required>
+            </div>
+            <div class="col-5">
+              <label class="form-label-sm">Ride Type</label>
+              <select class="form-select form-select-sm" id="scheduleRideType">
+                <option value="go">Go</option>
+                <option value="comfort">Comfort</option>
+                <option value="xl">XL</option>
+                <option value="boda">Boda</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="form-label-sm">Estimated Fare, UGX (optional)</label>
+            <input type="number" class="form-control form-control-sm" id="scheduleFare" placeholder="e.g. 45000" min="0" step="1000">
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top:1px solid #f1eef7;">
+          <button type="button" class="btn-outline-brand" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-brand"><i class="fa-solid fa-calendar-check me-2"></i>Schedule Trip</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div id="toastHost" style="position:fixed;bottom:24px;right:24px;z-index:2000;display:flex;flex-direction:column;gap:10px;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="assets/js/business.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matlex Ride</title>
+  <link rel="icon" href="assets/images/Logo1.png" type="image/png">
+  <meta name="description" content="Book a safe, affordable taxi or boda ride anywhere in Uganda with Matlex Ride. Pay with MTN MoMo, Airtel Money or cash. Available 24/7." />
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav class="navbar-main" id="navbar">
+  <div class="container-xl">
+    <div class="navbar-inner">
+      <a href="#home" class="nav-logo">
+        <img src="assets/images/Logo1.png" alt="Matlex Ride logo" class="nav-logo-img">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/features.html">Features</a></li>
+        <li><a href="pages/services.html">Services</a></li>
+        <li><a href="pages/pricing.html">Pricing</a></li>
+        <li><a href="pages/reviews.html">Reviews</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+        <li><a href="pages/careers.html">Careers</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-drop-toggle">Join us <i class="fa-solid fa-chevron-down nav-drop-icon"></i></a>
+          <ul class="nav-drop-menu">
+            <li><a href="client/index.html"><i class="fa-solid fa-user"></i> Passenger App</a></li>
+            <li><a href="driver/index.html"><i class="fa-solid fa-car"></i> Driver App</a></li>
+            <li><a href="pages/login.html"><i class="fa-solid fa-building"></i> Business Account</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="client/index.html" class="btn-brand">Book a Ride</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="pages/about.html">About</a>
+  <a href="pages/features.html">Features</a>
+  <a href="pages/services.html">Services</a>
+  <a href="pages/pricing.html">Pricing</a>
+  <a href="pages/reviews.html">Reviews</a>
+  <a href="pages/contact.html">Contact</a>
+  <a href="pages/careers.html">Careers</a>
+  <div class="mobile-nav-join-label">Join us</div>
+  <div class="mobile-nav-ctas">
+    <a href="client/index.html">Passenger App</a>
+    <a href="driver/index.html">Driver App</a>
+    <a href="pages/login.html">Business Account</a>
+  </div>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-layer hero-layer-1"></div>
+  <div class="hero-layer hero-layer-2"></div>
+  <div class="hero-layer hero-layer-3"></div>
+  <div class="container-xl">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <div class="hero-copy reveal">
+        
+          <h1><span>Your Ride - Your Way</span></h1>
+          <p>Get picked up by verified drivers in Kampala, Entebbe, Mukono and beyond. Enjoy clear fares, flexible payments, and premium service crafted for modern commuters.</p>
+
+          <div class="hero-actions">
+            <a href="#" class="store-badge-link">
+              <img src="assets/images/google-play-badge.svg" alt="Get it on Google Play" class="store-badge">
+            </a>
+            <a href="#" class="store-badge-link">
+              <img src="assets/images/app-store-badge.svg" alt="Download on the App Store" class="store-badge">
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <strong>12,000+</strong>
+              Rides completed monthly
+            </div>
+            <div>
+              <strong>4.9★</strong>
+              App rating
+            </div>
+            <div>
+              <strong>24/7</strong>
+              HR Support
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="hero-visual reveal">
+          <div class="phone-card">
+            <img src="assets/images/phone.png" alt="Matlex Ride app on mobile" class="phone-shot">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-py stats-bar" aria-label="Company statistics">
+  <div class="container-xl">
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-number" data-target="500">0</div>
+        <div class="stat-label">Verified drivers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="12000">0</div>
+        <div class="stat-label">Happy passengers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="65000">0</div>
+        <div class="stat-label">Trips completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="24">0</div>
+        <div class="stat-label">Hours support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-py" id="why-us">
+  <div class="container-xl">
+    <div class="section-head text-center mb-5 reveal">
+      <span class="section-tag"><i class="fa-solid fa-star"></i> Why Choose Matlex</span>
+      <h2></h2>
+      <p>Experience premium transport in Uganda with transparent pricing, verified drivers, and a smooth booking journey.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Verified drivers</h3>
+          <p>Every driver is screened, rated, and supported so you can ride with confidence.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-magenta"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Fast pickups</h3>
+          <p>Find nearby cars and boda rides quickly with real-time availability and dynamic routing.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
+          <h3>Flexible payment</h3>
+          <p>Pay by MTN MoMo, Airtel Money, card, or cash — no hidden fees and no surprises.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-route"></i></div>
+          <h3>Live tracking</h3>
+          <p>Track your route, driver location, and arrival time in a single app interface.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-4">
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-magenta"><i class="fa-solid fa-headset"></i></div>
+          <h3>24/7 support</h3>
+          <p>Customer service in Uganda is ready to assist anytime, day or night.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-5">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+          <h3>Trusted by thousands</h3>
+          <p>Riders and drivers rely on Matlex for safe journeys across major cities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Riden Showcase -->
+<section class="riden-showcase" id="ride-visual">
+  <img src="assets/images/Riden.png" alt="Matlex Ride experience" class="riden-img">
+  <div class="riden-overlay">
+    <div class="riden-content reveal">
+      <span class="section-tag riden-tag"><i class="fa-solid fa-road"></i> The Matlex Experience</span>
+      <h2 class="riden-heading">Rides you forward</h2>
+      <p class="riden-text">Book instantly, track in real-time, and arrive in style every trip across Uganda.</p>
+      <div class="hero-actions mt-4">
+        <a href="client/index.html" class="btn-brand">Book a Ride</a>
+        <a href="pages/features.html" class="btn-outline riden-outline">Explore Features</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-py section-alt" id="services">
+  <div class="container-xl">
+    <div class="section-head text-center mb-5 reveal">
+      <span class="section-tag"><i class="fa-solid fa-car-side"></i> Our Services</span>
+      <h2>Choose the Secure ride </h2>
+      <p>From quick boda hops to airport transfers and group trips, Matlex has a service for every journey.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-car"></i></div>
+          <h3>Matlex Go</h3>
+          <p>Everyday rides with affordable fares and quick arrival.</p>
+          <span>No limit</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 reveal reveal-delay-1">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
+          <h3>Matlex Comfort</h3>
+          <p>Calm commute for Everyday rides with affordable fares.</p>
+          <span>Travel with Comfort</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 reveal reveal-delay-2">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-van-shuttle"></i></div>
+          <h3>Matlex XL</h3>
+          <p>Room for groups, families, and extra luggage.</p>
+          <span>Ride in Extra Comfort</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 reveal reveal-delay-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-motorcycle"></i></div>
+          <h3>Matlex Boda</h3>
+          <p>Quick, safe boda rides through busy Kampala traffic.</p>
+          <span>Beat the Traffic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Payment Options & Wallet -->
+<section class="section-py payment-showcase" id="payments">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-5 reveal text-center">
+        <img src="assets/images/Mob.png" alt="Matlex Ride payment screen" class="pay-img">
+      </div>
+
+      <div class="col-lg-7 reveal reveal-delay-2">
+        <span class="section-tag"><i class="fa-solid fa-wallet"></i> Payments &amp; Wallet</span>
+       
+        <div class="pay-methods mt-4">
+          <div class="pay-method-item">
+            <div class="pay-method-icon pay-icon-yellow"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <div>
+              <strong>MTN Mobile Money</strong>
+              <p>Pay instantly with your MTN MoMo wallet</p>
+            </div>
+          </div>
+          <div class="pay-method-item">
+            <div class="pay-method-icon pay-icon-red"><i class="fa-solid fa-sim-card"></i></div>
+            <div>
+              <strong>Airtel Money</strong>
+              <p>Seamless payments via Airtel Money for all Airtel subscribers across Uganda.</p>
+            </div>
+          </div>
+          <div class="pay-method-item">
+            <div class="pay-method-icon pay-icon-blue"><i class="fa-solid fa-credit-card"></i></div>
+            <div>
+              <strong>Card &amp; Visa</strong>
+              <p>Use your Visa or Mastercard for transparent fares, zero surprises.</p>
+            </div>
+          </div>
+          <div class="pay-method-item">
+            <div class="pay-method-icon pay-icon-purple"><i class="fa-solid fa-wallet"></i></div>
+            <div>
+              <strong>Matlex Wallet</strong>
+              <p>Top up your in-app wallet once and enjoy instant one-tap checkout on every ride.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="client/index.html" class="btn-brand mt-4 d-inline-block">Book &amp; Pay Now</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section-py testimonials-bg" id="testimonials">
+  <div class="container-xl">
+    <div class="section-head text-center mb-5 reveal">
+      <span class="section-tag"><i class="fa-solid fa-quote-left"></i> Testimonials</span>
+      <h2></h2>
+    </div>
+
+    <div class="testimonial-carousel reveal">
+      <button class="carousel-btn prev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="carousel-track-wrap">
+        <div class="carousel-track">
+          <article class="testimonial-card">
+            <div class="tc-stars">★★★★★</div>
+            <p>"Matlex Ride makes every trip simple and secure. I can book in seconds and always know the fare upfront. Highly recommended!"</p>
+            <div class="tc-author">
+              <div class="tc-avatar" style="background:linear-gradient(135deg,#9333ea,#ec4899);">AN</div>
+              <div>
+                <div class="tc-name">Alice Nakato</div>
+                <div class="tc-role">Teacher, Kampala</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="tc-stars">★★★★★</div>
+            <p>"Driving with Matlex changed my income. The app is easy, the payouts are fast, and the support team is always helpful."</p>
+            <div class="tc-author">
+              <div class="tc-avatar" style="background:linear-gradient(135deg,#db2777,#ec4899);">PO</div>
+              <div>
+                <div class="tc-name">Peter Okello</div>
+                <div class="tc-role">Matlex Driver, Ntinda</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="tc-stars">★★★★☆</div>
+            <p>"The boda service is fast and reliable. I always know the driver details and can share my trip with family."</p>
+            <div class="tc-author">
+              <div class="tc-avatar" style="background:linear-gradient(135deg,#ec4899,#f472b6);">SM</div>
+              <div>
+                <div class="tc-name">Samuel Mukasa</div>
+                <div class="tc-role">Student, Makerere</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <button class="carousel-btn next" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<section class="section-py cta-section" id="cta">
+  <div class="container-xl">
+    <div class="cta-panel reveal">
+      <div>
+        <span class="section-tag cta-tag"><i class="fa-solid fa-rocket"></i> Ready to ride?</span>
+        <h2>Experience seamless travel across Uganda with Matlex.</h2>
+      </div>
+      <div class="cta-actions">
+        
+        <a href="#" class="store-badge-link">
+          <img src="assets/images/google-play-badge.svg" alt="Get it on Google Play" class="store-badge">
+        </a>
+        <a href="#" class="store-badge-link">
+          <img src="assets/images/app-store-badge.svg" alt="Download on the App Store" class="store-badge">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- Image gallery (place images in assets/images/) -->
+<section class="section-py image-gallery" aria-label="Gallery">
+  <div class="container-xl">
+    <div class="section-head text-center mb-4 reveal">
+      <h2>Gallery</h2>
+      <p class="muted">Welcome to our gallery of Matlex Ride experiences.</p>
+    </div>
+
+    <div class="image-grid reveal">
+      <figure class="image-card">
+        <a href="assets/images/mobile.png" target="_blank" rel="noopener"><img src="assets/images/mobile.png" alt="Mobile app screenshot"></a>
+        <figcaption>Limitless Rides</figcaption>
+      </figure>
+      <figure class="image-card">
+        <a href="assets/images/Kla.jpg" target="_blank" rel="noopener"><img src="assets/images/Kla.jpg" alt="Kla image"></a>
+        <figcaption>Your City ride</figcaption>
+      </figure>
+      <figure class="image-card">
+        <a href="assets/images/kab.jpg" target="_blank" rel="noopener"><img src="assets/images/kab.jpg" alt="kab image"></a>
+        <figcaption>Lets Go to the Hills</figcaption>
+      </figure>
+      <figure class="image-card">
+        <a href="assets/images/Image1.png" target="_blank" rel="noopener"><img src="assets/images/Image1.png" alt="Image1"></a>
+        <figcaption>Safe Rides for your package</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <div class="container-xl">
+    <div class="row gy-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">
+          <img src="assets/images/Logo1.png" alt="Matlex Ride logo" class="footer-logo-img">
+          <div>
+            <div class="footer-logo-name">Matlex Ride</div>
+            <div class="footer-logo-sub">Uganda</div>
+          </div>
+        </div>
+        <p class="footer-desc">Matlex Ride connects riders and drivers across Kampala, Entebbe, Mukono and beyond with a premium booking experience.</p>
+        <div class="footer-contact">
+          <a href="tel:+256709508211"><i class="fa-solid fa-phone"></i> +256 709 508 211</a>
+          <a href="mailto:hello@matlexride.ug"><i class="fa-solid fa-envelope"></i> info@matlexride.ug</a>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/features.html">Features</a></li>
+          <li><a href="pages/services.html">Services</a></li>
+          <li><a href="pages/pricing.html">Pricing</a></li>
+          <li><a href="pages/reviews.html">Reviews</a></li>
+          <li><a href="pages/about.html">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Products</div>
+        <ul class="footer-links">
+          <li><a href="client/index.html">Passenger App</a></li>
+          <li><a href="driver/index.html">Driver App</a></li>
+          <li><a href="#cta">Become a Partner</a></li>
+          <li><a href="#contact">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Safety</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <div class="footer-heading">Get the app</div>
+        <div class="footer-badges">
+          <a href="#" class="store-badge-link"><img src="assets/images/google-play-badge.svg" alt="Google Play" class="store-badge"></a>
+          <a href="#" class="store-badge-link"><img src="assets/images/app-store-badge.svg" alt="App Store" class="store-badge"></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a href="#" class="social-icon si-tiktok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="social-icon si-youtube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="social-icon si-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" class="social-icon si-instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon si-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-icon si-x"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="back-to-top" title="Back to top"><i class="fa-solid fa-chevron-up"></i></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

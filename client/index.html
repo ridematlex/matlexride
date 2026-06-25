@@ -1,0 +1,1028 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Matlex Ride</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <meta name="theme-color" content="#D946EF" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Matlex Ride" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="assets/css/client.css" />
+</head>
+<body>
+
+<div class="phones-grid">
+
+
+<!-- ============================================================
+     SCREEN 1 — ONBOARDING
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="onboarding" style="display:none;">
+    <div class="status-bar dark">
+      <span>9:41</span>
+      <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-onboarding">
+      <!-- Slide 1 -->
+      <div class="ob-slide" style="display:flex;">
+        <div class="ob-art" style="background:rgba(217,70,239,.1);">🚗</div>
+        <div class="ob-title">Ride Anytime,<br>Anywhere in Uganda</div>
+        <div class="ob-desc">Book a safe, affordable ride with Matlex in seconds. Available 24/7 across Kampala and beyond.</div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="ob-slide" style="display:none;">
+        <div class="ob-art" style="background:rgba(40,199,111,.1);">🛡️</div>
+        <div class="ob-title">Your Safety is<br>Our Priority</div>
+        <div class="ob-desc">Every Matlex driver is verified, licensed, and rated. Share your trip live with family and friends.</div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="ob-slide" style="display:none;">
+        <div class="ob-art" style="background:rgba(115,103,240,.1);">📱</div>
+        <div class="ob-title">Pay Your Way —<br>MoMo, Cash or Card</div>
+        <div class="ob-desc">Use MTN MoMo, Airtel Money, cash, or card. Transparent pricing — no hidden charges, ever.</div>
+      </div>
+
+      <div class="ob-dots">
+        <div class="ob-dot active"></div>
+        <div class="ob-dot"></div>
+        <div class="ob-dot"></div>
+      </div>
+
+      <div class="ob-footer">
+        <button class="btn-primary" id="obNextBtn">Next</button>
+        <button class="btn-ghost btn-skip-ob" style="margin-top:10px;padding:12px;">Skip</button>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 2 — LOGIN
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="login" style="display:none;">
+    <div class="status-bar dark">
+      <span>9:41</span>
+      <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-login">
+      <div class="login-hero">
+        <div class="login-logo"><img src="../assets/images/Logo1.png" alt="Matlex Ride"></div>
+        <div class="login-app-name">Matlex Ride</div>
+        <div class="login-app-sub">Passenger Portal</div>
+      </div>
+
+      <div class="login-form-area">
+        <div class="login-heading">Welcome Back!</div>
+        <div class="login-sub">Sign in to book your next ride</div>
+
+        <div class="inp-wrap mb-3">
+          <i class="fa-solid fa-phone"></i>
+          <input id="loginPhone" class="inp" type="tel" placeholder="+256 7XX XXX XXX" />
+        </div>
+        <div class="inp-wrap mb-1">
+          <i class="fa-solid fa-lock"></i>
+          <input id="loginPassword" class="inp" type="password" placeholder="Password" />
+        </div>
+        <div class="forgot-link">Forgot Password?</div>
+
+        <button class="btn-primary btn-sign-in">
+          <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Log In
+        </button>
+
+        <div class="divider-or">or continue with</div>
+
+        <div class="social-row mb-4">
+          <button class="social-btn"><i class="fa-brands fa-google" style="color:#ea4335;font-size:16px;"></i> Google</button>
+          <button class="social-btn"><i class="fa-brands fa-facebook" style="color:#1877f2;font-size:16px;"></i> Facebook</button>
+        </div>
+
+        <p style="text-align:center;font-size:13px;color:var(--muted);">
+          Don't have an account?
+          <span class="btn-to-register" style="color:var(--brand);font-weight:700;cursor:pointer;"> Sign Up</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 3 — REGISTER (Passenger)
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="register" style="display:none;">
+    <div class="status-bar light">
+      <span>9:41</span>
+      <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-register">
+      <div class="reg-header">
+        <button class="reg-back btn-to-login"><i class="fa-solid fa-arrow-left"></i></button>
+        <div>
+          <h2>Create Account</h2>
+          <p>Join thousands of Matlex riders</p>
+        </div>
+      </div>
+
+      <div class="reg-body">
+        <div class="mb-3">
+          <div class="lbl">Full Name</div>
+          <div class="inp-wrap"><i class="fa-solid fa-user"></i><input id="regName" class="inp" type="text" placeholder="e.g. Alice Nakato" /></div>
+        </div>
+        <div class="mb-3">
+          <div class="lbl">Phone Number</div>
+          <div class="inp-wrap"><i class="fa-solid fa-phone"></i><input id="regPhone" class="inp" type="tel" placeholder="+256 7XX XXX XXX" /></div>
+        </div>
+        <div class="mb-3">
+          <div class="lbl">Email Address</div>
+          <div class="inp-wrap"><i class="fa-solid fa-envelope"></i><input id="regEmail" class="inp" type="email" placeholder="you@email.com" /></div>
+        </div>
+        <div class="mb-3">
+          <div class="lbl">Password</div>
+          <div class="inp-wrap"><i class="fa-solid fa-lock"></i><input id="regPassword" class="inp" type="password" placeholder="Min. 8 characters" /></div>
+        </div>
+        <div class="mb-4">
+          <div class="lbl">Confirm Password</div>
+          <div class="inp-wrap"><i class="fa-solid fa-lock"></i><input id="regPassword2" class="inp" type="password" placeholder="Re-enter password" /></div>
+        </div>
+
+        <!-- Referral code -->
+        <div style="background:#fffbf0;border:1.5px dashed var(--brand);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+          <i class="fa-solid fa-tag" style="color:var(--brand);"></i>
+          <input id="regReferral" type="text" placeholder="Referral / Promo code (optional)" style="border:none;background:transparent;font-size:13px;font-weight:600;color:var(--dark);outline:none;flex:1;" />
+        </div>
+
+        <!-- T&C -->
+        <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--muted);margin-bottom:20px;cursor:pointer;">
+          <input id="regTerms" type="checkbox" style="accent-color:var(--brand);width:16px;height:16px;margin-top:1px;flex-shrink:0;" />
+          I agree to Matlex Ride's <span style="color:var(--brand);font-weight:600;"> Terms of Service</span> and <span style="color:var(--brand);font-weight:600;"> Privacy Policy</span>
+        </label>
+
+        <button class="btn-primary btn-register-submit" style="background:var(--success);box-shadow:0 4px 16px rgba(40,199,111,.4);">
+          <i class="fa-solid fa-user-plus me-2"></i>Create My Account
+        </button>
+        <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:14px;">
+          Already have an account? <span class="btn-to-login" style="color:var(--brand);font-weight:700;cursor:pointer;">Log In</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 4 — HOME
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="home" style="display:none;">
+
+    <div class="screen-home">
+      <!-- Map area -->
+      <div class="map-area">
+        <div id="liveMap" class="live-map"></div>
+
+        <!-- Nearby drivers -->
+        <div class="driver-dot" style="top:25%;left:24%;animation-delay:.3s;">🚗</div>
+        <div class="driver-dot" style="top:20%;left:58%;animation-delay:.8s;">🚗</div>
+        <div class="driver-dot" style="top:50%;left:75%;animation-delay:.5s;">🚗</div>
+        <div class="driver-dot" style="top:65%;left:20%;animation-delay:1s;">🚗</div>
+        <div class="driver-dot" style="top:72%;left:55%;animation-delay:.2s;">🚗</div>
+
+        <!-- Top bar -->
+        <div class="map-top">
+          <div class="status-bar abs">
+            <span>9:41</span>
+            <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+          </div>
+          <div style="padding:0 14px 8px;display:flex;align-items:center;justify-content:space-between;margin-top:44px;">
+            <div style="background:rgba(0,0,0,.45);backdrop-filter:blur(8px);border-radius:12px;padding:8px 14px;display:flex;align-items:center;gap:8px;">
+              <div id="homeAvatar" style="width:32px;height:32px;background:#fff;border-radius:8px;display:grid;place-items:center;overflow:hidden;"><img src="../assets/images/Logo1.png" alt="Matlex" style="width:100%;height:100%;object-fit:contain;"></div>
+              <div>
+                <div id="homeGreeting" style="font-size:13px;font-weight:700;color:#fff;">Hi there! 👋</div>
+                <div id="homeLocation" style="font-size:10px;color:rgba(255,255,255,.5);">Locating…</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button style="width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border:none;color:#fff;font-size:15px;cursor:pointer;display:grid;place-items:center;">
+                <i class="fa-solid fa-bell"></i>
+              </button>
+              <button class="btn-to-profile" style="width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border:none;color:#fff;font-size:15px;cursor:pointer;display:grid;place-items:center;">
+                <i class="fa-solid fa-user"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zoom buttons -->
+        <div style="position:absolute;right:14px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;z-index:5;">
+          <button id="mapZoomIn" style="width:32px;height:32px;background:rgba(255,255,255,.9);border:none;border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;color:var(--dark);display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.3);">+</button>
+          <button id="mapZoomOut" style="width:32px;height:32px;background:rgba(255,255,255,.9);border:none;border-radius:8px;font-size:22px;line-height:1;cursor:pointer;color:var(--dark);display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.3);">−</button>
+        </div>
+
+        <!-- Nearby count chip -->
+        <div id="nearbyChip" style="position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:6px 16px;border-radius:20px;color:#fff;font-size:12px;font-weight:600;white-space:nowrap;">
+          <span style="color:var(--brand);">●</span> <span id="nearbyCount">…</span>
+        </div>
+
+        <!-- Bottom sheet -->
+        <div class="home-sheet">
+          <div class="sheet-handle"></div>
+
+          <!-- Where to pill -->
+          <div class="where-to-pill btn-to-book">
+            <i class="fa-solid fa-magnifying-glass wt-icon"></i>
+            <span class="wt-text">Where to?</span>
+            <i class="fa-solid fa-chevron-right wt-arrow"></i>
+          </div>
+
+          <!-- Quick destinations -->
+          <div class="quick-dest-row">
+            <div class="quick-dest btn-to-book"><i class="fa-solid fa-house"></i> Home</div>
+            <div class="quick-dest btn-to-book"><i class="fa-solid fa-briefcase"></i> Work</div>
+            <div class="quick-dest btn-to-book"><i class="fa-solid fa-plane"></i> Airport</div>
+          </div>
+
+          <!-- Promo row -->
+          <div style="margin-top:10px;margin-bottom:2px;">
+            <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">Offers for You</div>
+            <div class="promo-scroll">
+              <div class="promo-track">
+                <div class="promo-chip">
+                  <div class="promo-chip-icon">🎉</div>
+                  <div><div class="promo-chip-text">50% off first ride</div><div class="promo-chip-sub">Use code: MATLEX50</div></div>
+                </div>
+                <div class="promo-chip">
+                  <div class="promo-chip-icon">🌙</div>
+                  <div><div class="promo-chip-text">Night rides — 20% off</div><div class="promo-chip-sub">Valid 9PM–5AM</div></div>
+                </div>
+                <div class="promo-chip">
+                  <div class="promo-chip-icon">👨‍👩‍👧</div>
+                  <div><div class="promo-chip-text">Refer &amp; earn</div><div class="promo-chip-sub">UGX 5,000 per referral</div></div>
+                </div>
+                <!-- Duplicate set — enables a seamless infinite loop -->
+                <div class="promo-chip" aria-hidden="true">
+                  <div class="promo-chip-icon">🎉</div>
+                  <div><div class="promo-chip-text">50% off first ride</div><div class="promo-chip-sub">Use code: MATLEX50</div></div>
+                </div>
+                <div class="promo-chip" aria-hidden="true">
+                  <div class="promo-chip-icon">🌙</div>
+                  <div><div class="promo-chip-text">Night rides — 20% off</div><div class="promo-chip-sub">Valid 9PM–5AM</div></div>
+                </div>
+                <div class="promo-chip" aria-hidden="true">
+                  <div class="promo-chip-icon">👨‍👩‍👧</div>
+                  <div><div class="promo-chip-text">Refer &amp; earn</div><div class="promo-chip-sub">UGX 5,000 per referral</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="btm-tab-bar">
+      <div class="btm-tab active" data-screen="home"><i class="fa-solid fa-house"></i>Home</div>
+      <div class="btm-tab" data-screen="history"><i class="fa-solid fa-clock-rotate-left"></i>Trips</div>
+      <div class="btm-tab btn-to-book" style="cursor:pointer;">
+        <div style="width:48px;height:48px;background:var(--brand);border-radius:50%;display:grid;place-items:center;margin-top:-20px;box-shadow:0 4px 14px rgba(217,70,239,.5);border:4px solid var(--card-bg);">
+          <i class="fa-solid fa-plus" style="font-size:22px;color:var(--dark);"></i>
+        </div>
+      </div>
+      <div class="btm-tab" data-screen="history"><i class="fa-solid fa-wallet"></i>Wallet</div>
+      <div class="btm-tab btn-to-profile" style="cursor:pointer;"><i class="fa-solid fa-user"></i>Profile</div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 5 — BOOK (destination search)
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="book" style="display:none;">
+
+    <div class="screen-book">
+      <!-- Live map background -->
+      <div id="bookMap" class="live-map"></div>
+
+      <!-- Floating top bar -->
+      <div class="map-top">
+        <div class="status-bar abs">
+          <span>9:42</span>
+          <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+        </div>
+        <div style="padding:0 14px;margin-top:44px;">
+          <button class="back-btn btn-to-home" style="background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom sheet: route inputs + suggestions -->
+      <div class="book-sheet">
+        <div class="sheet-handle"></div>
+
+        <!-- Route inputs -->
+        <div class="route-inputs">
+          <div class="route-dots">
+            <div class="rd-pickup"></div>
+            <div class="rd-line"></div>
+            <div class="rd-dropoff"></div>
+          </div>
+          <div class="route-fields">
+            <div class="route-inp-wrap">
+              <input id="pickupInp" class="route-inp" type="text" placeholder="Your location" />
+              <button class="route-inp-clear" type="button" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="route-inp-wrap">
+              <input id="destInp" class="route-inp" type="text" placeholder="Enter destination…" />
+              <button class="route-inp-clear" type="button" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="suggestions">
+        <div id="suggSectionTitle" class="sugg-section-title">Recent Places</div>
+
+        <div id="recentPlacesList">
+          <div class="mx-loading">Loading…</div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 6 — CHOOSE RIDE TYPE
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="choose" style="display:none;">
+    <div class="status-bar abs">
+      <span>9:43</span>
+      <div class="sb-icons" style="color:#fff;"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-choose">
+      <!-- Mini map with route -->
+      <div class="choose-map">
+        <div class="map-grid"></div>
+        <div class="map-road-h" style="top:45%;"></div>
+        <div class="map-road-v" style="left:50%;"></div>
+        <div class="route-drawn"></div>
+        <!-- Back button -->
+        <div style="position:absolute;top:52px;left:14px;z-index:6;">
+          <button class="back-btn btn-to-book" style="background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;border-radius:10px;">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+        <!-- Route summary -->
+        <div style="position:absolute;top:52px;left:62px;right:14px;z-index:6;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+          <i class="fa-solid fa-location-dot" style="color:var(--success);font-size:12px;"></i>
+          <span style="font-size:11px;color:#fff;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bugolobi → Entebbe Airport</span>
+          <span style="font-size:11px;color:var(--brand);font-weight:700;">38 km</span>
+        </div>
+      </div>
+
+      <!-- Sheet -->
+      <div class="choose-sheet">
+        <div class="sheet-handle"></div>
+        <div style="font-size:15px;font-weight:700;color:var(--dark);margin-bottom:12px;">Choose your ride</div>
+
+        <!-- Ride types -->
+        <div class="ride-type-card selected">
+          <div class="ride-icon" style="background:rgba(217,70,239,.12);color:var(--brand);">🚗</div>
+          <div style="flex:1;">
+            <div class="ride-type-name">Matlex Go</div>
+            <div class="ride-type-desc">Affordable everyday rides</div>
+            <div class="ride-type-eta"><i class="fa-solid fa-clock" style="color:var(--muted);font-size:10px;"></i> 4–6 min away</div>
+          </div>
+          <div>
+            <div class="ride-fare">UGX 35,000</div>
+            <div class="ride-fare-note">Estimated</div>
+          </div>
+        </div>
+
+        <div class="ride-type-card popular">
+          <div class="ride-icon" style="background:rgba(115,103,240,.12);color:var(--purple);">🚙</div>
+          <div style="flex:1;">
+            <div class="ride-type-name">Matlex Comfort</div>
+            <div class="ride-type-desc">Newer cars, more space</div>
+            <div class="ride-type-eta"><i class="fa-solid fa-clock" style="color:var(--muted);font-size:10px;"></i> 6–8 min away</div>
+          </div>
+          <div>
+            <div class="ride-fare">UGX 45,000</div>
+            <div class="ride-fare-note">Estimated</div>
+          </div>
+        </div>
+
+        <div class="ride-type-card">
+          <div class="ride-icon" style="background:rgba(0,207,232,.12);color:var(--info);">🚐</div>
+          <div style="flex:1;">
+            <div class="ride-type-name">Matlex XL</div>
+            <div class="ride-type-desc">Up to 6 passengers, SUV</div>
+            <div class="ride-type-eta"><i class="fa-solid fa-clock" style="color:var(--muted);font-size:10px;"></i> 8–12 min away</div>
+          </div>
+          <div>
+            <div class="ride-fare">UGX 65,000</div>
+            <div class="ride-fare-note">Estimated</div>
+          </div>
+        </div>
+
+        <div class="ride-type-card">
+          <div class="ride-icon" style="background:rgba(217,70,239,.12);color:var(--warning);">🏍️</div>
+          <div style="flex:1;">
+            <div class="ride-type-name">Matlex Boda</div>
+            <div class="ride-type-desc">Fast, beat traffic</div>
+            <div class="ride-type-eta"><i class="fa-solid fa-clock" style="color:var(--muted);font-size:10px;"></i> 2–4 min away</div>
+          </div>
+          <div>
+            <div class="ride-fare">UGX 14,000</div>
+            <div class="ride-fare-note">Estimated</div>
+          </div>
+        </div>
+
+        <!-- Payment method -->
+        <div class="payment-row">
+          <span class="payment-icon">📱</span>
+          <span class="payment-label">MTN Mobile Money</span>
+          <span class="payment-change">Change</span>
+        </div>
+
+        <!-- Promo code input -->
+        <div style="display:flex;gap:8px;margin-bottom:14px;">
+          <div class="inp-wrap" style="flex:1;">
+            <i class="fa-solid fa-tag"></i>
+            <input class="inp" type="text" placeholder="Promo code" />
+          </div>
+          <button style="padding:0 16px;background:var(--brand-light);color:var(--brand-dark);border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;">Apply</button>
+        </div>
+
+        <button class="btn-primary btn-to-searching">
+          <i class="fa-solid fa-car me-2"></i>Confirm Ride — UGX 45,000
+        </button>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 7 — SEARCHING FOR DRIVER
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="searching" style="display:none;">
+    <div class="status-bar dark">
+      <span>9:43</span>
+      <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-searching">
+      <div class="searching-body">
+        <div class="ripple-wrap">
+          <div class="ripple"></div>
+          <div class="ripple"></div>
+          <div class="ripple"></div>
+          <div class="search-car-icon">🚗</div>
+        </div>
+        <div class="searching-title">Finding your driver…</div>
+        <div class="searching-sub">Connecting you with the nearest<br>available Matlex driver</div>
+        <div class="searching-dots">
+          <div class="s-dot"></div>
+          <div class="s-dot"></div>
+          <div class="s-dot"></div>
+        </div>
+      </div>
+
+      <div class="searching-footer">
+        <div class="trip-summary-row">
+          <div class="ts-item">
+            <div class="ts-value">Matlex Comfort</div>
+            <div class="ts-label">Ride Type</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-value">UGX 45,000</div>
+            <div class="ts-label">Est. Fare</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-value">38 km</div>
+            <div class="ts-label">Distance</div>
+          </div>
+        </div>
+        <button class="btn-cancel-search btn-to-home">
+          <i class="fa-solid fa-xmark me-2"></i>Cancel Search
+        </button>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 8 — DRIVER ASSIGNED / TRACKING
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="tracking" style="display:none;">
+    <div class="status-bar abs">
+      <span>9:45</span>
+      <div class="sb-icons" style="color:#fff;"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-tracking">
+      <!-- Live map -->
+      <div class="tracking-map">
+        <div class="map-grid"></div>
+        <div class="map-road-h" style="top:42%;"></div>
+        <div class="map-road-v" style="left:45%;"></div>
+        <div class="tracking-path"></div>
+        <!-- My dot -->
+        <div class="my-dot" style="top:44%;left:70%;"></div>
+
+        <!-- Overlays -->
+        <div class="tracking-overlay-top">
+          <div class="eta-pill">
+            <i class="fa-solid fa-clock"></i> Arriving in 6 min
+          </div>
+          <div class="live-pill">
+            <div class="blink"></div> LIVE
+          </div>
+        </div>
+
+        <!-- Route label -->
+        <div style="position:absolute;bottom:14px;left:14px;right:14px;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;z-index:5;">
+          <i class="fa-solid fa-route" style="color:var(--brand);font-size:16px;"></i>
+          <div style="flex:1;">
+            <div style="font-size:10px;color:rgba(255,255,255,.5);">Drop-off</div>
+            <div style="font-size:12.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Entebbe International Airport</div>
+          </div>
+          <span style="font-size:11px;color:var(--brand);font-weight:700;white-space:nowrap;">38 km</span>
+        </div>
+      </div>
+
+      <!-- Sheet -->
+      <div class="tracking-sheet">
+        <div class="sheet-handle"></div>
+
+        <!-- Driver Card -->
+        <div class="driver-card-track">
+          <div class="driver-avatar-track" style="background:linear-gradient(135deg,#7367f0,#a855f7);">PO</div>
+          <div style="flex:1;">
+            <div class="driver-track-name">Peter Okello</div>
+            <div class="driver-track-plate">UBG 432B · Toyota Wish · Silver</div>
+            <div class="driver-track-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span>4.9 · 142 trips</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <button class="c-btn call"><i class="fa-solid fa-phone"></i></button>
+            <button class="c-btn msg"><i class="fa-solid fa-comment"></i></button>
+          </div>
+        </div>
+
+        <!-- Safety row -->
+        <div class="safety-row">
+          <button class="safety-btn">
+            <i class="fa-solid fa-share-nodes" style="color:var(--info);"></i> Share Trip
+          </button>
+          <button class="safety-btn">
+            <i class="fa-solid fa-shield-halved" style="color:var(--success);"></i> Safety
+          </button>
+          <button class="safety-btn">
+            <i class="fa-solid fa-headset" style="color:var(--purple);"></i> Support
+          </button>
+        </div>
+
+        <!-- Live metrics -->
+        <div class="live-metrics-row">
+          <div class="lm-item">
+            <div class="lm-value" style="color:var(--brand);">6 min</div>
+            <div class="lm-label">Driver ETA</div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-value">38 km</div>
+            <div class="lm-label">Trip Dist.</div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-value">UGX 45K</div>
+            <div class="lm-label">Fare</div>
+          </div>
+        </div>
+
+        <!-- Driver message -->
+        <div style="background:#f8f9fb;border-radius:12px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#7367f0,#a855f7);display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;">P</div>
+          <div style="flex:1;">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">Peter · Just now</div>
+            <div style="font-size:13px;color:var(--dark);">"On my way! Will be there in 6 minutes. Look out for a silver Toyota Wish."</div>
+          </div>
+        </div>
+
+        <!-- Payment method reminder -->
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(217,70,239,.08);border:1px solid rgba(217,70,239,.2);border-radius:12px;padding:10px 14px;margin-bottom:14px;">
+          <span style="font-size:18px;">📱</span>
+          <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--dark);">MTN Mobile Money</div>
+          <div style="font-size:14px;font-weight:800;color:var(--brand);">UGX 45,000</div>
+        </div>
+
+        <button class="btn-complete btn-to-rate" style="width:100%;padding:14px;background:var(--success);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px;box-shadow:0 4px 14px rgba(40,199,111,.35);">
+          <i class="fa-solid fa-flag-checkered me-2"></i>Simulate: Trip Complete
+        </button>
+
+        <button class="btn-cancel-trip btn-to-home">
+          <i class="fa-solid fa-xmark me-2"></i>Cancel Trip
+        </button>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 9 — RATE DRIVER
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="rate" style="display:none;">
+    <div class="status-bar dark">
+      <span>10:42</span>
+      <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-rate">
+      <div class="rate-confetti">
+        <span class="rate-trophy">🎉</span>
+        <div class="rate-title">You've Arrived!</div>
+        <div class="rate-sub">Hope you enjoyed your Matlex ride.<br>How was Peter as your driver?</div>
+      </div>
+
+      <div class="rate-body">
+        <!-- Driver mini card -->
+        <div class="rate-driver-mini">
+          <div class="rate-driver-avatar" style="background:linear-gradient(135deg,#7367f0,#a855f7);">PO</div>
+          <div>
+            <div class="rate-driver-name">Peter Okello</div>
+            <div class="rate-driver-sub">UBG 432B · Toyota Wish</div>
+          </div>
+          <div class="trip-fare-badge">UGX 45,000</div>
+        </div>
+
+        <!-- Trip summary -->
+        <div class="rate-trip-summary">
+          <div class="rts-item"><div class="rts-value">38 km</div><div class="rts-label">Distance</div></div>
+          <div class="rts-item"><div class="rts-value">52 min</div><div class="rts-label">Duration</div></div>
+          <div class="rts-item"><div class="rts-value">MTN</div><div class="rts-label">Payment</div></div>
+        </div>
+
+        <!-- Stars -->
+        <div style="text-align:center;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px;">Tap to rate your experience</div>
+        <div class="star-row">
+          <button class="star-btn">⭐</button>
+          <button class="star-btn">⭐</button>
+          <button class="star-btn">⭐</button>
+          <button class="star-btn active">⭐</button>
+          <button class="star-btn active">⭐</button>
+        </div>
+
+        <!-- Aspect chips -->
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;">What did you like?</div>
+        <div class="rate-aspects">
+          <div class="aspect-chip selected">😊 Friendly</div>
+          <div class="aspect-chip selected">🚗 Clean Car</div>
+          <div class="aspect-chip">⚡ On Time</div>
+          <div class="aspect-chip">🗺️ Good Route</div>
+          <div class="aspect-chip">🤫 Quiet Ride</div>
+          <div class="aspect-chip selected">🛡️ Safe Driver</div>
+          <div class="aspect-chip">🎵 Good Music</div>
+        </div>
+
+        <!-- Comment -->
+        <textarea class="rate-comment" rows="3" placeholder="Anything else you'd like to say about your ride? (optional)"></textarea>
+
+        <!-- Tip row -->
+        <div style="margin-bottom:16px;">
+          <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;">Add a tip for Peter?</div>
+          <div style="display:flex;gap:8px;">
+            <button style="flex:1;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;background:#fafbfc;color:var(--text);transition:all .2s;" onclick="this.style.borderColor='var(--brand)';this.style.background='var(--brand-light)';">UGX 2K</button>
+            <button style="flex:1;padding:10px;border:1.5px solid var(--brand);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;background:var(--brand-light);color:var(--brand-dark);">UGX 5K</button>
+            <button style="flex:1;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;background:#fafbfc;color:var(--text);transition:all .2s;" onclick="this.style.borderColor='var(--brand)';this.style.background='var(--brand-light)';">UGX 10K</button>
+            <button style="flex:1;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;background:#fafbfc;color:var(--text);">None</button>
+          </div>
+        </div>
+
+        <button class="btn-primary btn-submit-rate" style="background:var(--success);box-shadow:0 4px 16px rgba(40,199,111,.4);">
+          <i class="fa-solid fa-paper-plane me-2"></i>Submit Rating
+        </button>
+        <button class="btn-ghost btn-to-history" style="margin-top:10px;font-size:13px;">Skip for now</button>
+      </div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 10 — TRIP HISTORY
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="history" style="display:none;">
+    <div class="status-bar dark">
+      <span>9:41</span>
+      <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-history">
+      <div class="history-header">
+        <h2>My Trips</h2>
+        <p>All your Matlex rides in one place</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs" style="padding-bottom:12px;">
+        <div class="filter-tab active">All Trips</div>
+        <div class="filter-tab">Completed</div>
+        <div class="filter-tab">Cancelled</div>
+        <div class="filter-tab">Upcoming</div>
+      </div>
+
+      <!-- Summary pill -->
+      <div style="padding:10px 16px 0;display:flex;gap:10px;background:var(--card-bg);">
+        <div style="flex:1;background:var(--body-bg);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:16px;font-weight:800;color:var(--dark);">42</div>
+          <div style="font-size:10px;color:var(--muted);">Total Trips</div>
+        </div>
+        <div style="flex:1;background:var(--body-bg);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:16px;font-weight:800;color:var(--dark);">UGX 1.8M</div>
+          <div style="font-size:10px;color:var(--muted);">Total Spent</div>
+        </div>
+        <div style="flex:1;background:var(--body-bg);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:16px;font-weight:800;color:var(--brand);">4.9 ★</div>
+          <div style="font-size:10px;color:var(--muted);">Avg. Given</div>
+        </div>
+      </div>
+
+      <div class="history-list">
+
+        <div class="history-card">
+          <div class="hc-top">
+            <span class="hc-date">Today, 9:05 AM</span>
+            <span class="hc-fare">UGX 45,000</span>
+          </div>
+          <div class="hc-driver">
+            <div class="hc-driver-av" style="background:linear-gradient(135deg,#7367f0,#a855f7);">PO</div>
+            <span class="hc-driver-name">Peter Okello · Toyota Wish</span>
+            <span class="hc-driver-stars">★★★★★ 5.0</span>
+          </div>
+          <div class="hc-route">
+            <div class="hc-route-point"><i class="fa-solid fa-circle" style="color:var(--success);"></i><span>Shell Bugolobi, Kampala</span></div>
+            <div class="hc-route-point"><i class="fa-solid fa-location-dot" style="color:var(--danger);"></i><span>Entebbe International Airport</span></div>
+          </div>
+          <span class="hc-status hcs-done"><i class="fa-solid fa-check"></i> Completed</span>
+        </div>
+
+        <div class="history-card">
+          <div class="hc-top">
+            <span class="hc-date">Yesterday, 7:30 AM</span>
+            <span class="hc-fare">UGX 32,000</span>
+          </div>
+          <div class="hc-driver">
+            <div class="hc-driver-av" style="background:#28c76f;">MK</div>
+            <span class="hc-driver-name">Moses Kato · Honda Fit</span>
+            <span class="hc-driver-stars">★★★★★ 4.8</span>
+          </div>
+          <div class="hc-route">
+            <div class="hc-route-point"><i class="fa-solid fa-circle" style="color:var(--success);"></i><span>Kololo Hill, Kampala</span></div>
+            <div class="hc-route-point"><i class="fa-solid fa-location-dot" style="color:var(--danger);"></i><span>Mukono Town</span></div>
+          </div>
+          <span class="hc-status hcs-done"><i class="fa-solid fa-check"></i> Completed</span>
+        </div>
+
+        <div class="history-card">
+          <div class="hc-top">
+            <span class="hc-date">Mon, Jun 2 · 6:15 AM</span>
+            <span class="hc-fare" style="color:var(--muted);">—</span>
+          </div>
+          <div class="hc-driver">
+            <div class="hc-driver-av" style="background:#ea5455;">JS</div>
+            <span class="hc-driver-name">John Ssemwanga · Axio</span>
+            <span class="hc-driver-stars" style="color:var(--muted);">No rating</span>
+          </div>
+          <div class="hc-route">
+            <div class="hc-route-point"><i class="fa-solid fa-circle" style="color:var(--success);"></i><span>Ntinda, Kampala</span></div>
+            <div class="hc-route-point"><i class="fa-solid fa-location-dot" style="color:var(--danger);"></i><span>Kampala CBD</span></div>
+          </div>
+          <span class="hc-status hcs-cancel"><i class="fa-solid fa-xmark"></i> Cancelled</span>
+        </div>
+
+        <div class="history-card">
+          <div class="hc-top">
+            <span class="hc-date">Sun, Jun 1 · 3:20 PM</span>
+            <span class="hc-fare">UGX 18,000</span>
+          </div>
+          <div class="hc-driver">
+            <div class="hc-driver-av" style="background:#00cfe8;color:#fff;">DN</div>
+            <span class="hc-driver-name">David Nsubuga · Premio</span>
+            <span class="hc-driver-stars">★★★★☆ 4.0</span>
+          </div>
+          <div class="hc-route">
+            <div class="hc-route-point"><i class="fa-solid fa-circle" style="color:var(--success);"></i><span>Wandegeya</span></div>
+            <div class="hc-route-point"><i class="fa-solid fa-location-dot" style="color:var(--danger);"></i><span>Muyenga, Kampala</span></div>
+          </div>
+          <span class="hc-status hcs-done"><i class="fa-solid fa-check"></i> Completed</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="btm-tab-bar">
+      <div class="btm-tab" data-screen="home"><i class="fa-solid fa-house"></i>Home</div>
+      <div class="btm-tab active" data-screen="history"><i class="fa-solid fa-clock-rotate-left"></i>Trips</div>
+      <div class="btm-tab btn-to-book" style="cursor:pointer;">
+        <div style="width:48px;height:48px;background:var(--brand);border-radius:50%;display:grid;place-items:center;margin-top:-20px;box-shadow:0 4px 14px rgba(217,70,239,.5);border:4px solid var(--card-bg);">
+          <i class="fa-solid fa-plus" style="font-size:22px;color:var(--dark);"></i>
+        </div>
+      </div>
+      <div class="btm-tab" data-screen="history"><i class="fa-solid fa-wallet"></i>Wallet</div>
+      <div class="btm-tab btn-to-profile" style="cursor:pointer;"><i class="fa-solid fa-user"></i>Profile</div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SCREEN 11 — PASSENGER PROFILE
+     ============================================================ -->
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-speaker"></div><div class="notch-camera"></div></div>
+  <div class="phone-screen" data-screen="profile" style="display:none;">
+    <div class="status-bar dark">
+      <span>9:41</span>
+      <div class="sb-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></div>
+    </div>
+
+    <div class="screen-profile">
+      <div class="profile-header-area">
+        <div class="pf-avatar-wrap">
+          <div class="pf-avatar">AN</div>
+          <div class="pf-edit-btn"><i class="fa-solid fa-camera"></i></div>
+        </div>
+        <div class="pf-name">Alice Nakato</div>
+        <div class="pf-phone">+256 772 456 788</div>
+
+        <div class="pf-stats">
+          <div class="pf-stat">
+            <div class="pf-stat-value">42</div>
+            <div class="pf-stat-label">Trips</div>
+          </div>
+          <div class="pf-stat">
+            <div class="pf-stat-value">UGX 1.8M</div>
+            <div class="pf-stat-label">Spent</div>
+          </div>
+          <div class="pf-stat">
+            <div class="pf-stat-value">4.9★</div>
+            <div class="pf-stat-label">Rating</div>
+          </div>
+          <div class="pf-stat">
+            <div class="pf-stat-value">3</div>
+            <div class="pf-stat-label">Referrals</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-body-area">
+
+        <!-- Wallet card -->
+        <div style="background:linear-gradient(135deg,var(--dark),var(--dark3));border-radius:16px;padding:16px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:4px;text-transform:uppercase;letter-spacing:.8px;">Matlex Wallet</div>
+            <div style="font-size:22px;font-weight:800;color:var(--brand);">UGX 15,000</div>
+          </div>
+          <button style="background:var(--brand);color:var(--dark);border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;">
+            <i class="fa-solid fa-plus me-1"></i>Top Up
+          </button>
+        </div>
+
+        <div class="pb-section-title">Account</div>
+
+        <div class="pb-item">
+          <div class="pb-icon" style="background:rgba(217,70,239,.12);color:var(--brand);"><i class="fa-solid fa-user"></i></div>
+          <div class="pb-text"><div class="pb-title">Personal Info</div><div class="pb-subtitle">Name, phone, email</div></div>
+          <i class="fa-solid fa-chevron-right pb-chevron"></i>
+        </div>
+
+        <div class="pb-item">
+          <div class="pb-icon" style="background:rgba(115,103,240,.12);color:var(--purple);"><i class="fa-solid fa-map-location-dot"></i></div>
+          <div class="pb-text"><div class="pb-title">Saved Places</div><div class="pb-subtitle">Home, Work, Favourite spots</div></div>
+          <i class="fa-solid fa-chevron-right pb-chevron"></i>
+        </div>
+
+        <div class="pb-item">
+          <div class="pb-icon" style="background:rgba(0,207,232,.12);color:var(--info);"><i class="fa-solid fa-credit-card"></i></div>
+          <div class="pb-text"><div class="pb-title">Payment Methods</div><div class="pb-subtitle">MTN MoMo, Airtel, Card</div></div>
+          <i class="fa-solid fa-chevron-right pb-chevron"></i>
+        </div>
+
+        <div class="pb-item">
+          <div class="pb-icon" style="background:rgba(40,199,111,.12);color:var(--success);"><i class="fa-solid fa-gift"></i></div>
+          <div class="pb-text"><div class="pb-title">Referral Program</div><div class="pb-subtitle">Earn UGX 5,000 per referral</div></div>
+          <span class="pb-badge">3 Earned</span>
+          <i class="fa-solid fa-chevron-right pb-chevron ms-2"></i>
+        </div>
+
+        <div class="pb-section-title mt-3">More</div>
+
+        <div class="pb-item">
+          <div class="pb-icon" style="background:rgba(255,159,67,.12);color:var(--warning);"><i class="fa-solid fa-bell"></i></div>
+          <div class="pb-text"><div class="pb-title">Notifications</div><div class="pb-subtitle">Ride alerts, offers, news</div></div>
+          <i class="fa-solid fa-chevron-right pb-chevron"></i>
+        </div>
+
+        <div class="pb-item">
+          <div class="pb-icon" style="background:rgba(0,207,232,.12);color:var(--info);"><i class="fa-solid fa-headset"></i></div>
+          <div class="pb-text"><div class="pb-title">Help &amp; Support</div><div class="pb-subtitle">Report a trip, FAQs</div></div>
+          <i class="fa-solid fa-chevron-right pb-chevron"></i>
+        </div>
+
+        <div class="pb-item" onclick="showScreen('login')">
+          <div class="pb-icon" style="background:rgba(234,84,85,.1);color:var(--danger);"><i class="fa-solid fa-right-from-bracket"></i></div>
+          <div class="pb-text"><div class="pb-title" style="color:var(--danger);">Sign Out</div></div>
+        </div>
+
+        <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:14px;padding-bottom:8px;">Matlex Ride v1.0.0 · Uganda</div>
+      </div>
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="btm-tab-bar">
+      <div class="btm-tab" data-screen="home"><i class="fa-solid fa-house"></i>Home</div>
+      <div class="btm-tab" data-screen="history"><i class="fa-solid fa-clock-rotate-left"></i>Trips</div>
+      <div class="btm-tab btn-to-book" style="cursor:pointer;">
+        <div style="width:48px;height:48px;background:var(--brand);border-radius:50%;display:grid;place-items:center;margin-top:-20px;box-shadow:0 4px 14px rgba(217,70,239,.5);border:4px solid var(--card-bg);">
+          <i class="fa-solid fa-plus" style="font-size:22px;color:var(--dark);"></i>
+        </div>
+      </div>
+      <div class="btm-tab" data-screen="history"><i class="fa-solid fa-wallet"></i>Wallet</div>
+      <div class="btm-tab active" style="cursor:pointer;color:var(--brand);"><i class="fa-solid fa-user"></i>Profile</div>
+    </div>
+
+    <div class="phone-home-bar"><span></span></div>
+  </div>
+</div>
+
+
+</div><!-- /phones-grid -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script src="assets/js/client.js" defer></script>
+</body>
+</html>
